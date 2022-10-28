@@ -1,0 +1,78 @@
+<!--  app/views/restaurants/show.html.erb -->
+<h2>Details about <em><%= @restaurant.title %></em></h2>
+
+<ul id="details">
+  <li>
+    Rating:
+    <%= @restaurant.rating %>
+  </li>
+</ul>
+
+<h3>Description:</h3>
+<p id="description">
+  <%= @restaurant.description %>
+</p>
+
+
+<table class="table table-striped col-md-12" id="reviews">
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td>
+          <%= review.user %>
+        </td>
+        <td>
+          <%= review.rating %>
+        </td>
+        <td>
+          <%= review.date %>
+        </td>
+        <td>
+          <%= review.content %>
+        </td>
+        <td>
+          <%= link_to "Learn more", review_path(review) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= form_tag restaurant_path(@restaurant), :method => :put do %>
+    <%= label :restaurant, :rating, 'Rating', class: 'col-form-label'  %>
+    <%= select :restaurant, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
+    <%= label :restaurant, :content, 'Content', class: 'col-form-label' %>
+    <%= text_field :restaurant, 'Content', class: 'form-control' %>
+    <br/>
+    <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
+  <% end %>
+
+
+<table class="table table-striped col-md-12" id="timeslot">
+  <tbody>
+    <% @timeslots.each do |timeslot| %>
+      <tr>
+        <td>
+          <%= timeslot.user %>
+        </td>
+        <td>
+          <%= timeslot.time %>
+        </td>
+        <td>
+          <%= link_to "Join", join_timeslot_path(timeslot) %>
+        </td>
+        <td>
+          <%= link_to "Exit", exit_timeslot_path(timeslot) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class="row" id="end">
+  <%= link_to 'Back to restaurant list', restaurants_path, class: 'btn btn-primary col-2' %>
+</div>
+
+
