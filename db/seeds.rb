@@ -12,7 +12,7 @@ reviews = [
 ]
 
 reviews.each do |review|
-    Review.create!(review)
+  Review.create!(review)
 end
 
 timeslots = [
@@ -20,5 +20,5 @@ timeslots = [
 ]
 
 timeslots.each do |timeslot|
-    Timeslot.create!(timeslot)
+  Timeslot.create!(timeslot)
 end

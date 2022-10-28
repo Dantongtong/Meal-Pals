@@ -13,7 +13,7 @@
   <%= @restaurant.description %>
 </p>
 
-
+# show all the reviews
 <table class="table table-striped col-md-12" id="reviews">
   <tbody>
     <% @reviews.each do |review| %>
@@ -38,11 +38,11 @@
   </tbody>
 </table>
 
-
-<%= form_tag restaurant_path(@restaurant), :method => :put do %>
-    <%= label :restaurant, :rating, 'Rating', class: 'col-form-label'  %>
+# create a review
+<%= form_tag restaurant_path(@restaurant) do %>
+    <%= label :review, :rating, 'Rating', class: 'col-form-label'  %>
     <%= select :restaurant, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
-    <%= label :restaurant, :content, 'Content', class: 'col-form-label' %>
+    <%= label :review, :content, 'Content', class: 'col-form-label' %>
     <%= text_field :restaurant, 'Content', class: 'form-control' %>
     <br/>
     <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
