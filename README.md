@@ -11,4 +11,8 @@ rake db:seed
 rails server
 ```
 
+Test User:
+- email: test@columbia.edu
+- password: 123
+
 In browser, open http://localhost:3000
