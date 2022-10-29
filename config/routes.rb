@@ -55,5 +55,6 @@ Rails.application.routes.draw do
   #   end
   root 'home#index'
   resources :sessions
+  resources :timeslot
   resources :restaurants
 end
