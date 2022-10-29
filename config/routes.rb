@@ -54,6 +54,11 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'home#index'
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
   resources :sessions
   resources :timeslot
   resources :restaurants
