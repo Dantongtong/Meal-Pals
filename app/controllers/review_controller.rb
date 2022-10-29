@@ -6,4 +6,8 @@ class ReviewController < ApplicationController
         flash[:notice] = "This review was successfully created."
         redirect_to restaurant_path
       end
+
+    def review_params
+        params.require(:review).permit(:rating, :content)
+    end
   end
