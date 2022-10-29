@@ -22,3 +22,8 @@ timeslots = [
 timeslots.each do |timeslot|
   Timeslot.create!(timeslot)
 end
+
+
+# add user test data
+User.create([{ email: 'test@columbia.edu', password: '123', first_name: 'test' },
+             { email: 'byc@columbia.edu', password: '123', first_name: 'by' }])
