@@ -1,5 +1,6 @@
 <h1>Login Page</h1>
-<%= form_tag sessions_path, method: "post" do %>
+
+<%= form_tag sessions_path, method: "post" do |f|%>
   <div class="form-group">
     <label for="email">Email</label>
     <input type="text" name="email"  class="form-email form-control" id="form_email">
@@ -8,7 +9,7 @@
     <label for="password">Password</label>
     <input type="password" name="password"class="form-password form-control" id="form_password">
   </div>
-  <input type="submit" class="btn btn-primary" value="Sign In" />
+  <input type="submit" class="btn btn-primary" value="Log In" />
   <%#= link_to "Sign Up", new_user_path %>
 <% end %>
 <div><%= link_to "Create Account", new_user_path %></div>
