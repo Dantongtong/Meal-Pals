@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions
-  resources :timeslot
+  resources :timeslots
+  resources :reviews
   resources :restaurants
 end
