@@ -6,8 +6,8 @@
 <body>
 Hi <%= @user.first_name %>,
 
-Thanks for registering! To confirm your registration click the URL below.
+Thanks for signing up for Meal Pal! To confirm your registration click the URL below.
 
-<%= link_to "Confirm your email", confirm_email_user_url(@user.confirm_token) %>
+<div><%= link_to "Confirm your email", confirm_email_user_url(@user.confirm_token) %></div>
 </body>
 </html>
