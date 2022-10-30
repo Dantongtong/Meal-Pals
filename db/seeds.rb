@@ -6,6 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+restaurants = [
+  {name: 'Shake Shack', rating: 4, address: 'Unkown', details: 'Unknown'}
+]
+
+restaurants.each do |restaurant|
+  Restaurant.create!(restaurant)
+end
+
+
 reviews = [
   { restaurant_id: 1, user_id: 1, rating: 1, comment: 'Bad food.' },
   { restaurant_id: 1, user_id: 2, rating: 5, comment: 'Good food.' },

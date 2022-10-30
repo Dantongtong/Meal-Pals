@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<%= form_tag review_path, method: :post do %>
+<%= form_tag reviews_path, method: :post do %>
     <%= label :review, :rating, 'Rating', class: 'col-form-label'  %>
     <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
     <%= label :review, :comment, 'Comment', class: 'col-form-label' %>
