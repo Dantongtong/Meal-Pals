@@ -1,9 +1,9 @@
 class RestaurantsController < ApplicationController
-  # before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  #GET /restaurants/1
+  def index
+    @restaurants = Restaurant.all
+  end
 
-  # GET /restaurants
-  
-  # GET /restaurants/1
   def show
     rest_id = params[:id] # retrieve restaurant ID from URI route
     session[:rest_id] = rest_id
@@ -20,42 +20,30 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
+    @restaurant = Restaurant.find(params[:id])
   end
 
   # POST /restaurants
   def create
     @restaurant = Restaurant.create!(restaurant_params)
-
-    if @restaurant.save
-      redirect_to root_url, notice: 'Restaurant was successfully created.'
-    else
-      render :new
-    end
+    redirect_to root_url, notice: 'Restaurant was successfully created.'
   end
 
   # PATCH/PUT /restaurants/1
   def update
-    if @restaurant.update(restaurant_params)
-      redirect_to root_url, notice: 'Restaurant was successfully updated.'
-    else
-      render :edit
-    end
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.update_attributes!(restaurant_params)
+    redirect_to root_url, notice: 'Restaurant was successfully updated.'
   end
 
-  # DELETE /restaurants/1
+  # DELETE 
   def destroy
-    Restaurant.find(params[:id]).destroy
-    # @restaurants = Restaurant.all
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
     redirect_to root_url, notice: 'Restaurant was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_restaurant
-    #   @restaurant = Restaurant.find(params[:id])
-    # end
-
-    # Only allow a trusted parameter "white list" through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :rating, :address, :details)
     end
