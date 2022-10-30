@@ -23,10 +23,10 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.create!(restaurant_params)
 
     if @restaurant.save
-      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
+      redirect_to root_url, notice: 'Restaurant was successfully created.'
     else
       render :new
     end
@@ -44,7 +44,7 @@ class RestaurantsController < ApplicationController
   # DELETE /restaurants/1
   def destroy
     @restaurant.destroy
-    redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
+    redirect_to root_url, notice: 'Restaurant was successfully destroyed.'
   end
 
   private
