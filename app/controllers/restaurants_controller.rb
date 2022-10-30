@@ -2,12 +2,14 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
-  def index
-    @restaurants = Restaurant.all
-  end
-
+  
   # GET /restaurants/1
   def show
+    rest_id = params[:id] # retrieve restaurant ID from URI route
+    @restaurant = Restaurant.find(rest_id) # look up restaurant by unique ID
+    @reviews = Review.where(:restaurant_id => rest_id) 
+    @timeslots = Timeslot.where(:restaurant_id => rest_id) 
+    # will render app/views/restaurant/show.<extension> by default
   end
 
   # GET /restaurants/new
@@ -53,6 +55,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :type, :of, :food, :rating, :address, :details)
+      params.require(:restaurant).permit(:name, :rating, :address, :details)
     end
 end

@@ -1,6 +1,38 @@
-<h1>Home Page</h1>
+<h1>Restaurants List</h1>
+
+<p id="notice"><%= notice %></p>
 
 <div><%= link_to "Sign Up", new_user_path %></div>
 <div><%= link_to "Sign In", new_session_path %></div>
-<div><%= link_to "Restaurant Detail", restaurants_path %></div>
 <div><%= flash[:notice] %></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Address</th>
+      <th>Details</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        
+        <td><%= restaurant.rating %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.details %></td>
+        <td><%= link_to 'Restaurant Detail', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Restaurant', new_restaurant_path %>
