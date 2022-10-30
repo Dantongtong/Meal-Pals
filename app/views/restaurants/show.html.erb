@@ -1,5 +1,5 @@
 <!--  app/views/restaurants/show.html.erb -->
-<h2>Details about <em><%= @restaurant.title %></em></h2>
+<h2>Details about <em><%= @restaurant.name %></em></h2>
 
 <ul id="details">
   <li>
@@ -10,25 +10,24 @@
 
 <h3>Description:</h3>
 <p id="description">
-  <%= @restaurant.description %>
+  <%= @restaurant.details %>
 </p>
 
-# show all the reviews
 <table class="table table-striped col-md-12" id="reviews">
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
         <td>
-          <%= review.user %>
+          <%= review.user_id %>
         </td>
         <td>
           <%= review.rating %>
         </td>
         <td>
-          <%= review.date %>
+          <%= review.created_at %>
         </td>
         <td>
-          <%= review.content %>
+          <%= review.comment %>
         </td>
         <td>
           <%= link_to "Learn more", review_path(review) %>
@@ -38,12 +37,11 @@
   </tbody>
 </table>
 
-# create a review
-<%= form_tag review_path(), method: :post, do %>
+<%= form_tag review_path, method: :post do %>
     <%= label :review, :rating, 'Rating', class: 'col-form-label'  %>
-    <%= select :restaurant, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
-    <%= label :review, :content, 'Content', class: 'col-form-label' %>
-    <%= text_field :restaurant, 'Content', class: 'form-control' %>
+    <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
+    <%= label :review, :comment, 'Comment', class: 'col-form-label' %>
+    <%= text_field :review, 'Comment', class: 'form-control' %>
     <br/>
     <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
   <% end %>
@@ -54,25 +52,24 @@
     <% @timeslots.each do |timeslot| %>
       <tr>
         <td>
-          <%= timeslot.user %>
+          <%= timeslot.owner %>
         </td>
         <td>
-          <%= timeslot.time %>
+          <%= timeslot.start_time %>
         </td>
         <td>
-          <%= link_to "Join", timeslots_path(timeslot,:status=>"active") %>
+          <%= link_to "Join", timeslot_path(timeslot,:status=>"active") %>
         </td>
         <td>
-          <%= link_to "Exit", timeslots_path(timeslot,:status=>"inactive") %>
+          <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div><%= flash[:notice] %></div>
 
 
 <div class="row" id="end">
   <%= link_to 'Back to restaurant list', restaurants_path, class: 'btn btn-primary col-2' %>
 </div>
-
-

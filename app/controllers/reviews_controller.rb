@@ -1,6 +1,7 @@
-class ReviewController < ApplicationController  
+class ReviewsController < ApplicationController  
     def create
-        rest_id = params[:id]
+        rest_id = session[:rest_id]
+        user_id = session[:user_id]
         @restaurant = Restaurant.find(rest_id)
         @review = Review.create!(review_params)
         flash[:notice] = "This review was successfully created."

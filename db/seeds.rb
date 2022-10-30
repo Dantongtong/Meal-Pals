@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 reviews = [
-  { resaurant_id: 1, user_id: 1, rating: 1, comment: 'Bad food.' },
-  { resaurant_id: 1, user_id: 2, rating: 5, comment: 'Good food.' },
+  { restaurant_id: 1, user_id: 1, rating: 1, comment: 'Bad food.' },
+  { restaurant_id: 1, user_id: 2, rating: 5, comment: 'Good food.' },
 ]
 
 reviews.each do |review|
@@ -16,7 +16,7 @@ reviews.each do |review|
 end
 
 timeslots = [
-  { resaurant_id: 1, owner: 1, guest: 2, start_time: '10-Nov-2022 12:00:00' },
+  { restaurant_id: 1, owner: 1, guest: 2, start_time: '10-Nov-2022 12:00:00' },
 ]
 
 timeslots.each do |timeslot|

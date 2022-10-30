@@ -26,14 +26,16 @@ ActiveRecord::Schema.define(version: 20221029225301) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "resaurant_id"
-    t.integer "user_id"
-    t.integer "rating"
-    t.string  "comment"
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.string   "comment"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "timeslots", force: :cascade do |t|
-    t.integer  "resaurant_id"
+    t.integer  "restaurant_id"
     t.integer  "owner"
     t.integer  "guest"
     t.datetime "start_time"
