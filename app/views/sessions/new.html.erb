@@ -1,4 +1,4 @@
-<h1>Sign In Page</h1>
+<h1>Login Page</h1>
 <%= form_tag sessions_path, method: "post" do %>
   <div class="form-group">
     <label for="email">Email</label>
@@ -11,4 +11,6 @@
   <input type="submit" class="btn btn-primary" value="Sign In" />
   <%#= link_to "Sign Up", new_user_path %>
 <% end %>
+<div><%= link_to "Create Account", new_user_path %></div>
+
 <div><%= flash[:notice] %></div>
