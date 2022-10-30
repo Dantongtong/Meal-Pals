@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :restaurants
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -61,7 +60,10 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions
+  resources :restaurants, except: [:destroy]
+  delete '/restaurants/:id/delete' => 'restaurants#destroy', as: 'restaurants_delete'
+  get '/restaurants/:id/delete' => 'restaurants#destroy'
   resources :timeslots
   resources :reviews
-  resources :restaurants
+
 end
