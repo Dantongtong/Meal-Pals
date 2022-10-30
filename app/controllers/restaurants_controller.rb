@@ -44,7 +44,8 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1
   def destroy
-    @restaurant.destroy
+    Restaurant.find(params[:id]).destroy
+    # @restaurants = Restaurant.all
     redirect_to root_url, notice: 'Restaurant was successfully destroyed.'
   end
 
