@@ -13,3 +13,5 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :enable_starttls_auto => true
 }
+
+Rails.application.config.action_mailer.default_url_options = Rails.application.default_url_options
