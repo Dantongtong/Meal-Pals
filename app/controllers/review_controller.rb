@@ -1,5 +1,5 @@
 class ReviewController < ApplicationController  
-    def submit_review
+    def create
         rest_id = params[:id]
         @restaurant = Restaurant.find(rest_id)
         @review = Review.create!(review_params)
