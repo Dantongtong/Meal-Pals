@@ -1,4 +1,10 @@
+
+REGEX_PATTERN = /\A[A-Za-z0-9+_.-]+@[A-Za-z0-9+_.-]*columbia.edu\z/i
 class User < ActiveRecord::Base
+  validates :email, presence: true , uniqueness: true,
+            format: { with: REGEX_PATTERN, message: " address is invalid or not a columbia email."}
+  validates :first_name, presence: true
+  validates :password, presence: true, length: { minimum: 3 }
 
   before_create :confirmation_token
   def email_activate
