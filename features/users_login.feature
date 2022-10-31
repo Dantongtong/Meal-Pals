@@ -44,3 +44,8 @@ Scenario: log in with confirmed account
   Then I press "Log In"
   Then I should be on the home page
   And I should see "Log in successfully!"
+
+Scenario: click create account link
+  Given I am on the log in page
+  When  I follow "Create Account"
+  Then I should be on the sign up page
