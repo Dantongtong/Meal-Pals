@@ -5,11 +5,11 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    rest_id = params[:id] # retrieve restaurant ID from URI route
-    session[:rest_id] = rest_id
-    @restaurant = Restaurant.find(rest_id) # look up restaurant by unique ID
-    @reviews = Review.where(:restaurant_id => rest_id) 
-    @timeslots = Timeslot.where(:restaurant_id => rest_id) 
+    restaurant_id = params[:id] # retrieve restaurant ID from URI route
+    session[:restaurant_id] = restaurant_id
+    @restaurant = Restaurant.find(restaurant_id) # look up restaurant by unique ID
+    @reviews = Review.where(:restaurant_id => restaurant_id) 
+    @timeslots = Timeslot.where(:restaurant_id => restaurant_id) 
     # will render app/views/restaurant/show.<extension> by default
   end
 

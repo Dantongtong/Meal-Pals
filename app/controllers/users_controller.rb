@@ -20,11 +20,11 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-      flash[:success] = "Welcome to Meal Pal! Your email has been confirmed.
+      flash[:notice] = "Welcome to Meal Pal! Your email has been confirmed.
       Please sign in to continue."
       redirect_to new_session_path
     else
-      flash[:error] = "Sorry. User does not exist"
+      flash[:notice] = "Sorry. User does not exist"
       redirect_to new_session_path
     end
   end
