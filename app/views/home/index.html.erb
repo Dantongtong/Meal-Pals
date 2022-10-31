@@ -34,9 +34,9 @@
         <td><%= restaurant.rating %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.details %></td>
-        <td><%= link_to 'Restaurant Detail', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurants_delete_path(restaurant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detail', restaurant, id: restaurant.name.parameterize.underscore+"_Detail" %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant), id: restaurant.name.parameterize.underscore+"_Edit"%></td>
+        <td><%= link_to 'Destroy', restaurants_delete_path(restaurant), method: :delete, data: { confirm: 'Are you sure?' }, id: restaurant.name.parameterize.underscore+"_Destroy"%></td>
       </tr>
     <% end %>
   </tbody>

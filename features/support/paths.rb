@@ -16,12 +16,14 @@ module NavigationHelpers
     when /^the home page$/ then root_path
     when /^the log in page$/ then new_session_path
     when /^the sign up page$/ then new_user_path
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+    when /^the edit page for "(.*)"$/
+      restaurant = Restaurant.find_by(name: $1)
+      edit_restaurant_path(restaurant)
+    when /^the details page for "(.+)"$/
+      restaurant = Restaurant.find_by(name: $1)
+      restaurant_path(restaurant)
+    when /^the new page$/ then new_restaurant_path
+      
     else
       begin
         page_name =~ /^the (.*) page$/
