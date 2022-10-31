@@ -28,7 +28,6 @@ RSpec.describe UsersController, type: :controller do
     end
     it 'activate account successfully' do
       @user = User.create(email: 'test@columbia.edu', password: '123', first_name: 'test')
-      puts @user.confirm_token
       get :confirm_email, {id: @user.confirm_token}
       @user.reload
       expect(@user.email_confirmed).to be_truthy

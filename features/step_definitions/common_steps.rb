@@ -26,3 +26,7 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
     assert_equal path_to(page_name), current_path
   end
 end
+
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
+end
