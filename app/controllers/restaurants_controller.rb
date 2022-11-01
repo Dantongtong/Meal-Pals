@@ -1,9 +1,4 @@
 class RestaurantsController < ApplicationController
-  #GET /restaurants/1
-  def index
-    @restaurants = Restaurant.all
-  end
-
   def show
     restaurant_id = params[:id] # retrieve restaurant ID from URI route
     session[:restaurant_id] = restaurant_id

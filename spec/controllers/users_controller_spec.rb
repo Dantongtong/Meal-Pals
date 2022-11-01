@@ -7,7 +7,7 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template('new')
     end
   end
-
+  
   context "user#create" do
     it 'create user successfully' do
       count = User.count
