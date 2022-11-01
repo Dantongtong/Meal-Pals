@@ -17,6 +17,12 @@ Background: Restaurants have been added to database
   And  I am on the home page
   Then 5 restaurants should exist
 
+  Given the following timeslots exist:
+
+  | restaurant_id | owner | guest | start_time               |
+  | 1             | 1     |   2   |  '10-Nov-2022 12:00:00'  |
+
+
 Scenario: check restaurants list
   Given I am on the home page 
   Then I should see "Shake Shack"
@@ -28,6 +34,8 @@ Scenario: check restaurants list
 Scenario: check restaurant details
   When I press "Detail" with the id of "Shake Shack"
   Then I am on the details page for "Shake Shack"
+
+
 
 Scenario: add new restaurant
   Given I am on the home page
@@ -50,3 +58,25 @@ Scenario: delete restaurant and rating
   Given I am on the home page 
   When I press "Destroy" with the id of "Thai Market"
   Then I should see "Restaurant was successfully destroyed."
+
+Scenario: add reviews
+  Given I am on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  When I select "3" from "Rating"
+  When I fill in "Comment" with "Interesting food"
+  And I press "Submit review"
+  Then I should see "Interesting food"
+
+Scenario: Join timeslot
+
+
+  Given I am on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "Join" with the id of "1"
+  Then I should see "Joined this timeslot successfully."
+
+Scenario: Exit timeslot
+  Given I am on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "Exit" with the id of "1"
+  Then I should see "Exited this timeslot successfully."

@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<%= form_tag reviews_path, method: :post do %>
+<%= form_tag reviews_path, :id => 'add_reviews', method: :post do %>
     <%= label :review, :rating, 'Rating', class: 'col-form-label'  %>
     <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
     <%= label :review, :comment, 'Comment', class: 'col-form-label' %>
@@ -58,10 +58,10 @@
           <%= timeslot.start_time %>
         </td>
         <td>
-          <%= link_to "Join", timeslot_path(timeslot,:status=>"active") %>
+          <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.owner.to_s+"_Join" %>
         </td>
         <td>
-          <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") %>
+          <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.owner.to_s+"_Exit" %>
         </td>
       </tr>
     <% end %>

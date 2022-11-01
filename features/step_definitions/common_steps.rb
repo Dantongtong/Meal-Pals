@@ -30,3 +30,7 @@ end
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
+
+Then /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
