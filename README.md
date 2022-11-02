@@ -14,6 +14,6 @@ rails server
 Test User:
 - email: test@columbia.edu
 - password: 123
-> Don't forget to put add **SENDGRID_API_KEY** to `application.yml` under the config directory.
+> Don't forget to add **SENDGRID_API_KEY** to `application.yml` under the config directory.
 
 In browser, open http://localhost:3000
