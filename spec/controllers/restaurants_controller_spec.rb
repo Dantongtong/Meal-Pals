@@ -23,7 +23,8 @@ RSpec.describe RestaurantsController, type: :controller do
     it "edit currrent restaurant info" do
       @restaurant = Restaurant.create!(name: 'Ramen', rating: 'Good', details: 'Japanese food')
       get :edit, {:id => @restaurant.id}
-      expect(response).to redirect_to(edit_restaurant_path(@restaurant))
+      expect(response).to have_http_status(200)
+      #expect(response).to redirect_to(edit_restaurant_path(@restaurant))
     end
   end
 
