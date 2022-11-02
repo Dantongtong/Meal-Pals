@@ -19,4 +19,4 @@ development:
 test:
   HOST: 'localhost:3000'
 production:
-  HOST: "heroku url"
+  HOST: "https://mealpal-saas.herokuapp.com/"
