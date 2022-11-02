@@ -1,5 +1,8 @@
 # Meal-Pals
 
+## Ruby version
+2.6.6
+
 ## Team members
 
 Member 1 Name: Buyi Cheng
