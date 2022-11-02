@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     rv = review_params
     rv['restaurant_id'] = restaurant_id
     rv['user_id'] = user_id
-    @restaurant = Restaurant.find(restaurant_id)
+    # @restaurant = Restaurant.find(restaurant_id)
     @review = Review.create!(rv)
     if @review.save
       flash[:notice] = "This review was successfully created."
