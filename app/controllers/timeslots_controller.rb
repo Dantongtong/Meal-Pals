@@ -10,6 +10,7 @@ class TimeslotsController < ApplicationController
             @timeslot.guest=nil
             flash[:notice] = "Exited this timeslot successfully."
         end
+        @timeslot.save!
         redirect_to restaurant_path
     end
   end
