@@ -9,10 +9,10 @@ class ReviewsController < ApplicationController
     @review = Review.create!(rv)
     if @review.save
       flash[:notice] = "This review was successfully created."
-      redirect_to restaurant_path(restaurant_id)
     else
-      render 'show'
+      flash[:notice] = "This review failed to be created."
     end
+    redirect_to restaurant_path(restaurant_id)
   end
 
   def review_params
