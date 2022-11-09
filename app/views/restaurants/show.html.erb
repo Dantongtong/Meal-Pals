@@ -72,7 +72,7 @@
         <% end %>
         <% if session[:user_id] == timeslot.user_id %>
           <td>
-            <%= link_to 'Destroy', timeslots_path, method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
+            <%= link_to 'Destroy', timeslots_delete_path(timeslot), method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
           </td>
           <td>
             <%= link_to 'My profile', timeslots_path, method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>

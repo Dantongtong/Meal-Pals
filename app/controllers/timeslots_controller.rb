@@ -20,6 +20,7 @@ class TimeslotsController < ApplicationController
     end
 
     def show
+        restaurant_id = session[:restaurant_id]
         status = params[:status]
         timeslot_id = params[:id]
         @user_id = session[:user_id]
@@ -33,13 +34,19 @@ class TimeslotsController < ApplicationController
             flash[:notice] = "Exited this timeslot successfully."
         end
         @timeslot.save!
-        redirect_to restaurant_path
+
+        redirect_to restaurant_path(restaurant_id)
     end
 
     def destroy
+        restaurant_id = session[:restaurant_id]
         @timeslot = Timeslot.find(params[:id])
+        @guests =Guest.where(:timeslot_id =>params[:id])
+        @guests.each do |g|
+            g.destroy
+          end
         @timeslot.destroy
-        redirect_to restaurant_path, notice: 'Timeslot was successfully destroyed.'
+        redirect_to restaurant_path(restaurant_id), notice: 'Timeslot was successfully destroyed.'
     end
 
     def timeslot_params

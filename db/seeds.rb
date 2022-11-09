@@ -8,7 +8,10 @@
 
 
 restaurants = [
-  {name: 'Shake Shack', rating: 4, address: 'Unkown', details: 'Unknown'}
+  {name: 'Shake Shack', rating: 4, address: 'Unkown', details: 'Unknown'},
+  {name: 'J&J', rating: 3, address: 'Unkown', details: 'Unknown'},
+  {name: 'Dun Huang', rating: 3, address: 'Unkown', details: 'Unknown'},
+  {name: 'Sweetgreen', rating: 3, address: 'Unkown', details: 'Unknown'},
 ]
 
 restaurants.each do |restaurant|

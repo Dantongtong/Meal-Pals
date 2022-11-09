@@ -67,6 +67,8 @@ Rails.application.routes.draw do
   resources :restaurants, except: [:destroy]
   delete '/restaurants/:id/delete' => 'restaurants#destroy', as: 'restaurants_delete'
   get '/restaurants/:id/delete' => 'restaurants#destroy'
+  delete '/timeslots/:id/delete' => 'timeslots#destroy', as: 'timeslots_delete'
+  get '/timeslots/:id/delete' => 'timeslots#destroy'
   resources :timeslots
   resources :reviews
 
