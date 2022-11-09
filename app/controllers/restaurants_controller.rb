@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(restaurant_id) # look up restaurant by unique ID
     @reviews = Review.where(:restaurant_id => restaurant_id) 
     @timeslots = Timeslot.where(:restaurant_id => restaurant_id) 
+    @current = Time.now.strftime("%Y-%m-%d %H:%M:%S")
     # will render app/views/restaurant/show.<extension> by default
   end
 

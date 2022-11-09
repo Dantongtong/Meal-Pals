@@ -1,4 +1,7 @@
 <!--  app/views/restaurants/show.html.erb -->
+<link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
+<script src="/jquery.js"></script>
+<script src="/build/jquery.datetimepicker.full.min.js"></script>
 <h2>Details about <em><%= @restaurant.name %></em></h2>
 
 <ul id="details">
@@ -49,23 +52,50 @@
     <% @timeslots.each do |timeslot| %>
       <tr>
         <td>
-          <%= timeslot.owner %>
+          <%= timeslot.user_id %>
         </td>
         <td>
           <%= timeslot.start_time %>
         </td>
-        <td>
-          <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.owner.to_s+"_Join" %>
-        </td>
-        <td>
-          <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.owner.to_s+"_Exit" %>
-        </td>
+        <% if timeslot.start_time < @current  %>
+          <td>
+          <%= 'Closed' %>
+          </td>
+        <% elsif timeslot.start_time == @current %>
+          <td> 
+          <%= 'In-progress' %>
+          </td>
+        <% else %>
+          <td>
+          <%= 'Upcoming' %>
+          </td>
+        <% end %>
+        <% if session[:user_id] == timeslot.user_id %>
+          <td>
+            <%= link_to 'Destroy', timeslots_path, method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
+          </td>
+          <td>
+            <%= link_to 'My profile', timeslots_path, method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
+          </td>
+          <td>
+            <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.user_id.to_s+"_Exit" %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <div><%= flash[:notice] %></div>
 
+<%= form_tag timeslots_path, :id => 'add_timeslots', method: :post do %>
+  <%= label :timeslot, :start_time, 'Start time', class: 'col-form-label' %>
+  <%= text_field :timeslot, :start_time, class: 'form-control' %>
+  <%= submit_tag 'Create a slot', class: 'btn btn-primary' %>
+<% end %>
 
 <div class="row" id="end">
   <%= link_to 'Back to restaurant list', root_path, class: 'btn btn-primary col-2' %>
