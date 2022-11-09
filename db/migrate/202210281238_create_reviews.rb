@@ -1,8 +1,8 @@
 class CreateReviews < ActiveRecord::Migration
     def up
       create_table :reviews do |r|
-        r.integer :restaurant_id
-        r.integer :user_id
+        r.belongs_to :restaurant
+        r.belongs_to :user
         r.integer :rating
         r.string :comment
         r.timestamps null: false

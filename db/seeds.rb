@@ -26,13 +26,20 @@ reviews.each do |review|
 end
 
 timeslots = [
-  { restaurant_id: 1, owner: 1, guest: 2, start_time: '10-Nov-2022 12:00:00' },
+  { restaurant_id: 1, user_id: 1, status:"completed", start_time: '10-Nov-2022 12:00:00' },
 ]
 
 timeslots.each do |timeslot|
   Timeslot.create!(timeslot)
 end
 
+guests = [
+  { timeslot_id: 1, user_id: 1 },
+]
+
+guests.each do |guest|
+  Guest.create!(guest)
+end
 
 # add user test data
 User.create([{ email: 'test@columbia.edu', password: '123', first_name: 'test', email_confirmed: true }])
