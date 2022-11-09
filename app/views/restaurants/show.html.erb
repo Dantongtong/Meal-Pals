@@ -78,12 +78,21 @@
             <%= link_to 'My profile', timeslots_path, method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
           </td>
         <% else %>
-          <td>
+          
+          <% if Guest.where(:timeslot_id => timeslot.id ).size == 6 %>
+            <td>
+            <%= 'Full' %>
+            </td>
+          <% else %>
+            <td>
             <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
-          </td>
-          <td>
-            <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.user_id.to_s+"_Exit" %>
-          </td>
+            </td>
+          <% end %>
+          <% if Guest.where(:timeslot_id => timeslot.id , :user_id =>session[:user_id] ).size >= 1 %>
+            <td>
+              <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.user_id.to_s+"_Exit" %>
+            </td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

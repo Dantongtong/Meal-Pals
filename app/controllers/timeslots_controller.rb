@@ -24,11 +24,12 @@ class TimeslotsController < ApplicationController
         timeslot_id = params[:id]
         @user_id = session[:user_id]
         @timeslot = Timeslot.find(timeslot_id)
-        if status == 'active'
-            @timeslot.guest=session[:user_id]
+        if status == 'active'      
+            Guest.create!({'timeslot_id': timeslot_id,'user_id': @user_id })
             flash[:notice] = "Joined this timeslot successfully."
         else
-            @timeslot.guest=nil
+            @guest = Guest.find_by(:timeslot_id =>timeslot_id, :user_id => @user_id )
+            @guest.destroy
             flash[:notice] = "Exited this timeslot successfully."
         end
         @timeslot.save!

@@ -43,3 +43,4 @@ end
 
 # add user test data
 User.create([{ email: 'test@columbia.edu', password: '123', first_name: 'test', email_confirmed: true }])
+User.create([{ email: 'test2@columbia.edu', password: '123', first_name: 'test2', email_confirmed: true }])
