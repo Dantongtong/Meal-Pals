@@ -29,7 +29,7 @@ reviews.each do |review|
 end
 
 timeslots = [
-  { restaurant_id: 1, user_id: 1, status:"completed", start_time: '10-Nov-2022 12:00:00' },
+  { restaurant_id: 1, user_id: 1, status:"Completed", start_time: '2022-10-11 12:37:00' },
 ]
 
 timeslots.each do |timeslot|

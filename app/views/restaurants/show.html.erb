@@ -59,7 +59,7 @@
         </td>
         <% if timeslot.start_time < @current  %>
           <td>
-          <%= 'Closed' %>
+          <%= 'Completed' %>
           </td>
         <% elsif timeslot.start_time == @current %>
           <td> 
@@ -88,7 +88,7 @@
             <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
             </td>
           <% end %>
-          
+
           <% if Guest.where(:timeslot_id => timeslot.id , :user_id =>session[:user_id] ).size >= 1 %>
             <td>
               <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.user_id.to_s+"_Exit" %>
