@@ -7,7 +7,7 @@ class TimeslotsController < ApplicationController
         restaurant_id = session[:restaurant_id]
         user_id = session[:user_id]
         ts = timeslot_params
-        ts['start_time'] = DateTime.parse(params["timeslot"]["start_time"]).to_s(:db)
+        ts['start_time'] = Time.strptime(params["start_time"],"%m/%d/%Y %I:%M %p")
         ts['restaurant_id'] = restaurant_id
         ts['user_id'] = user_id
         @timeslot = Timeslot.create!(ts)
@@ -50,6 +50,6 @@ class TimeslotsController < ApplicationController
     end
 
     def timeslot_params
-        params.require(:timeslot).permit(:start_time)
+        params.permit(:start_time)
     end
   end
