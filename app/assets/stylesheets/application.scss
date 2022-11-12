@@ -17,3 +17,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
+
+.navbar {
+  padding-left: 6%;
+  padding-right: 6%;
+}
+
+.container {
+  width: 80%;
+}
