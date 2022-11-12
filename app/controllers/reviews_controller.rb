@@ -6,11 +6,15 @@ class ReviewsController < ApplicationController
     rv['restaurant_id'] = restaurant_id
     rv['user_id'] = user_id
     # @restaurant = Restaurant.find(restaurant_id)
-    @review = Review.create!(rv)
-    if @review.save
-      flash[:notice] = "This review was successfully created."
+    if rv['comment'] != ''
+      @review = Review.create!(rv)
+      if @review.save
+        flash[:notice] = "This review was successfully created."
+      else
+        flash[:notice] = "This review failed to be created."
+      end
     else
-      flash[:notice] = "This review failed to be created."
+      flash[:notice] = "Please enter your comments"
     end
     redirect_to restaurant_path(restaurant_id)
   end
