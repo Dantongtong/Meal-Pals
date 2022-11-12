@@ -1,17 +1,19 @@
-<h1>Login Page</h1>
+<div class="login-form">
+  <h1>Login Page</h1>
 
-<%= form_tag sessions_path, method: "post" do %>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" name="email"  class="form-email form-control" id="form_email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password"class="form-password form-control" id="form_password">
-  </div>
-  <input type="submit" class="btn btn-primary" value="Log In" />
-  <%#= link_to "Sign Up", new_user_path %>
-<% end %>
-<div><%= link_to "Create Account", new_user_path %></div>
+  <%= form_tag sessions_path, method: "post" do %>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" name="email"  class="form-email form-control" id="form_email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password"class="form-password form-control" id="form_password">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Log In" />
+    <%#= link_to "Sign Up", new_user_path %>
+  <% end %>
+  <div><%= link_to "Create Account", new_user_path %></div>
 
-<div><%= flash[:notice] %></div>
+  <div><%= flash[:notice] %></div>
+</div>

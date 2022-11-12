@@ -1,22 +1,24 @@
-<h1>Sign Up Page</h1>
-<%= form_for @user, url: users_path, method: :post do |f| %>
-  <div><%= label :user, :email, 'Email*', :class => 'col-form-label' %><span>(must be columbia email)</span></div>
-  <div><%= f.text_field :email, class: "form-control", placeholder: "" %></div>
+<div class="signup-form" >
+  <h1>Sign Up Page</h1>
+  <%= form_for  @user, url: users_path, method: :post do |f| %>
+    <div><%= label :user, :email, 'Email*', :class => 'col-form-label' %><span>(must be columbia email)</span></div>
+    <div><%= f.text_field :email, class: "form-control", placeholder: "" %></div>
 
-  <div><%= label :user, :password, 'Password*', :class => 'col-form-label' %></div>
-  <div><%= f.password_field :password, class: "form-control", placeholder: "" %></div>
-  <div><%= label :user, :first_name, 'First Name*', :class => 'col-form-label' %></div>
-  <div><%= f.text_field :first_name, class: "form-control", placeholder: "" %></div>
+    <div><%= label :user, :password, 'Password*', :class => 'col-form-label' %></div>
+    <div><%= f.password_field :password, class: "form-control", placeholder: "" %></div>
+    <div><%= label :user, :first_name, 'First Name*', :class => 'col-form-label' %></div>
+    <div><%= f.text_field :first_name, class: "form-control", placeholder: "" %></div>
 
-  <div><%= label :user, :middle_name, 'Middle Name', :class => 'col-form-label' %></div>
-  <div><%= f.text_field :middle_name, class: "form-control", placeholder: "" %></div>
-  <div><%= label :user, :last_name, 'Last Name', :class => 'col-form-label' %></div>
-  <div><%= f.text_field :last_name, class: "form-control", placeholder: "" %></div>
-  <div><%= f.submit "Sign Up", class: "btn btn-primary" %></div>
-<% end -%>
-<% if @user.errors.full_messages.any? %>
-  <% @user.errors.full_messages.each do |error_message| %>
-    <div style="color: red"><%= error_message if @user.errors.full_messages.first == error_message %> <br /></div>
+    <div><%= label :user, :middle_name, 'Middle Name', :class => 'col-form-label' %></div>
+    <div><%= f.text_field :middle_name, class: "form-control", placeholder: "" %></div>
+    <div><%= label :user, :last_name, 'Last Name', :class => 'col-form-label' %></div>
+    <div><%= f.text_field :last_name, class: "form-control", placeholder: "" %></div>
+    <div><%= f.submit "Sign Up", class: "btn btn-primary" %></div>
+  <% end -%>
+  <% if @user.errors.full_messages.any? %>
+    <% @user.errors.full_messages.each do |error_message| %>
+      <div style="color: red"><%= error_message if @user.errors.full_messages.first == error_message %> <br /></div>
+    <% end %>
   <% end %>
-<% end %>
-<div><%= flash[:notice] %></div>
+  <div><%= flash[:notice] %></div>
+</div>
