@@ -1,19 +1,11 @@
-<div class="login-form">
-  <h1>Login Page</h1>
-
-  <%= form_tag sessions_path, method: "post" do %>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" name="email"  class="form-email form-control" id="form_email">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" name="password"class="form-password form-control" id="form_password">
-    </div>
-    <input type="submit" class="btn btn-primary" value="Log In" />
-    <%#= link_to "Sign Up", new_user_path %>
+<div id="sign-in" class="card card-container">
+  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+  <p id="profile-name" class="profile-name-card"></p>
+  <%= form_tag sessions_path, method: "post", class: "form-user" do %>
+    <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
   <% end %>
-  <div><%= link_to "Create Account", new_user_path %></div>
-
-  <div><%= flash[:notice] %></div>
-</div>
+  <%= link_to "Create new account", new_user_path, class: "create-account" %>
+</div><!-- /card-container -->
+<div><%= flash[:notice] %></div>
