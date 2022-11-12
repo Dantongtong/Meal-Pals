@@ -7,14 +7,18 @@ class TimeslotsController < ApplicationController
         restaurant_id = session[:restaurant_id]
         user_id = session[:user_id]
         ts = timeslot_params
-        ts['start_time'] = Time.strptime(params["start_time"],"%m/%d/%Y %I:%M %p")
-        ts['restaurant_id'] = restaurant_id
-        ts['user_id'] = user_id
-        @timeslot = Timeslot.create!(ts)
-        if @timeslot.save
-        flash[:notice] = "This timeslot was successfully created."
+        if params["start_time"] != ''
+            ts['start_time'] = Time.strptime(params["start_time"],"%m/%d/%Y %I:%M %p")
+            ts['restaurant_id'] = restaurant_id
+            ts['user_id'] = user_id
+            @timeslot = Timeslot.create!(ts)
+            if @timeslot.save
+            flash[:notice] = "This timeslot was successfully created."
+            else
+            flash[:notice] = "This timeslot failed to be created."
+            end
         else
-        flash[:notice] = "This timeslot failed to be created."
+            flash[:notice] = "Please select a valid time slot."
         end
         redirect_to restaurant_path(restaurant_id)
     end

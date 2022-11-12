@@ -20,7 +20,7 @@ Background: Restaurants have been added to database
   Given the following timeslots exist:
 
   | restaurant_id | user_id |    status   | start_time             |
-  | 1             | 1       | 'Completed' | '10-Nov-2022 12:00:00' |
+  | 1             | 1       | 'Completed' | '2022-10-11 12:37:00'  |
 
 
 Scenario: check restaurants list

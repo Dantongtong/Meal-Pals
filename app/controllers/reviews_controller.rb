@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
         flash[:notice] = "This review failed to be created."
       end
     else
-      flash[:notice] = "Please enter your comments"
+      flash[:notice] = "Please enter your comments."
     end
     redirect_to restaurant_path(restaurant_id)
   end
