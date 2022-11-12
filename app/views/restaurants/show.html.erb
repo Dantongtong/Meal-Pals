@@ -37,7 +37,8 @@
   </tbody>
 </table>
 
-<%= form_tag reviews_path, :id => 'add_reviews', method: :post do %>
+<% if session[:user_id]  %>
+  <%= form_tag reviews_path, :id => 'add_reviews', method: :post do %>
     <%= label :review, :rating, 'Rating', class: 'col-form-label'  %>
     <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
     <%= label :review, :comment, 'Comment', class: 'col-form-label' %>
@@ -45,7 +46,7 @@
     <br/>
     <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
   <% end %>
-
+<% end %>
 
 <table class="table table-striped col-md-12" id="timeslot">
   <tbody>
@@ -84,9 +85,11 @@
             <%= 'Full' %>
             </td>
           <% elsif Guest.where(:timeslot_id => timeslot.id , :user_id =>session[:user_id] ).size == 0 %>
-            <td>
-            <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
-            </td>
+            <% if session[:user_id]  %>
+              <td>
+              <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
+              </td>
+            <% end %>
           <% end %>
 
           <% if Guest.where(:timeslot_id => timeslot.id , :user_id =>session[:user_id] ).size >= 1 %>
@@ -101,25 +104,26 @@
 </table>
 <div><%= flash[:notice] %></div>
 
-<%= form_tag timeslots_path, :id => 'add_timeslots', method: "post" do %>
-  <label for="start_time">Start time</label>
-  <div class='input-group date' id='datetimepicker1'>
-    <input type='text' name="start_time"  class="form-control" />
-    <span class="input-group-addon">
-    <span class="glyphicon glyphicon-calendar"></span>
-    </span>
-  </div>
-  <script type="text/javascript">
-      $(function () {
-        $('#datetimepicker1').datetimepicker({
-          inline: true,
-          sideBySide: true
+<% if session[:user_id]  %>
+  <%= form_tag timeslots_path, :id => 'add_timeslots', method: "post" do %>
+    <label for="start_time">Start time</label>
+    <div class='input-group date' id='datetimepicker1'>
+      <input type='text' name="start_time"  class="form-control" />
+      <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+          $('#datetimepicker1').datetimepicker({
+            inline: true,
+            sideBySide: true
+          });
         });
-      });
-  </script>
-  <input type="submit" class="btn btn-primary" value="Create a slot" />
+    </script>
+    <input type="submit" class="btn btn-primary" value="Create a slot" />
+  <% end %>
 <% end %>
-
 <div class="row" id="end">
   <%= link_to 'Back to restaurant list', root_path, class: 'btn btn-primary col-2' %>
 </div>
