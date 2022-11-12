@@ -18,11 +18,13 @@
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
-.navbar {
-  padding-left: 6%;
-  padding-right: 6%;
-}
+#application {
+  .navbar {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
 
-.container {
-  width: 80%;
+  .container {
+    width: 80%;
+  }
 }
