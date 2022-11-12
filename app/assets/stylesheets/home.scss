@@ -1,14 +1,21 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
-    color: pink !important;
-}
+
 img{
     height: 150px;
     width: 150px;
 }
+h1{
+    margin-bottom: 20px !important;
+}
 .arrange{
     display:flex;
     flex-flow:wrap;
+}
+.field{
+    padding-top:10px;
+}
+.actions{
+    margin: 20px 0;
 }
