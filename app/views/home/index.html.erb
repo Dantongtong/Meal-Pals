@@ -3,16 +3,6 @@
 </head>
 <h1>Restaurants List</h1>
 
-<div>
-  <% if logged_in? %>
-    Welcome, <%= current_user.first_name %> ! <%= link_to "Log Out", logout_session_path(session[:user_id]) %>
-    <%#= link_to "Log Out", logout_session_path(current_user) %>
-  <% else %>
-    <%= link_to "Log In", new_session_path %>
-  <% end %>
-</div>
-<!--<div><%#= link_to "Log In", new_session_path %></div>-->
-<!--<div><%#= link_to "Log Out", logout_session_path({id:1}) %></div>-->
 <div><%= flash[:notice] %></div>
 
 <table class="table table-hover">
