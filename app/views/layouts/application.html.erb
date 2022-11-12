@@ -26,9 +26,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to "#{current_user.first_name}" %></li>
-          <li> <%= link_to "Logout", logout_session_path(session[:user_id]) %></li>
+          <li> <%= link_to "Sign Out", logout_session_path(session[:user_id]) %></li>
         <% else %>
-          <li><%= link_to "Login", new_session_path %></li>
+          <li><%= link_to "Sign In", new_session_path %></li>
         <% end -%>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -36,6 +36,30 @@
 </nav>
 
 <div class="container">
+  <% if flash[:notice] %>
+    <div class="alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+  <% if flash[:error] %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
   <%= yield %>
 </div>
 

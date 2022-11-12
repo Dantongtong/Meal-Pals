@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
+  def index
+  end
+
   def create
     user = User.find_by(email: params[:email], password: params[:password])
     if user
       if user.email_confirmed
         session[:user_id] = user.id
-        flash[:notice] = "Log in successfully!"
+        flash[:success] = "Log in successfully!"
         redirect_to root_path
       else
         flash[:notice] = 'Please activate your account by following the
@@ -12,14 +15,15 @@ class SessionsController < ApplicationController
         render action: :new
       end
     else
-      flash[:notice] = "Email or password is incorrect."
+      flash[:error] = "Email or password is incorrect."
       render action: :new
     end
   end
 
   def logout
     session[:user_id] = nil
-    redirect_to root_path, notice: "Log out successfully!"
+    flash[:success] = "Log out successfully!"
+    redirect_to root_path
   end
 
 end
