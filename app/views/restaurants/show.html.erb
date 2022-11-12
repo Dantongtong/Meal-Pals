@@ -1,7 +1,4 @@
-<!--  app/views/restaurants/show.html.erb -->
-<link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
-<script src="/jquery.js"></script>
-<script src="/build/jquery.datetimepicker.full.min.js"></script>
+
 <h2>Details about <em><%= @restaurant.name %></em></h2>
 
 <ul id="details">
@@ -113,14 +110,14 @@
       <span class="glyphicon glyphicon-calendar"></span>
       </span>
     </div>
-    <script type="text/javascript">
-        $(function () {
-          $('#datetimepicker1').datetimepicker({
-            inline: true,
-            sideBySide: true
-          });
-        });
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        $(function () {-->
+<!--          $('#datetimepicker1').datetimepicker({-->
+<!--            inline: true,-->
+<!--            sideBySide: true-->
+<!--          });-->
+<!--        });-->
+<!--    </script>-->
     <input type="submit" class="btn btn-primary" value="Create a slot" />
   <% end %>
 <% end %>

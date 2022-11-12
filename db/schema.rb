@@ -11,11 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221112150309) do
+ActiveRecord::Schema.define(version: 20221112154601) do
 
   create_table "guests", force: :cascade do |t|
     t.integer "timeslot_id"
     t.integer "user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "avatar"
+    t.integer  "gender",     default: 0
+    t.date     "birth"
+    t.string   "phone"
+    t.string   "preference"
+    t.integer  "user_id",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -43,25 +54,15 @@ ActiveRecord::Schema.define(version: 20221112150309) do
     t.integer  "user_id"
   end
 
-  create_table "userprofiles", force: :cascade do |t|
-    t.string   "avatar"
-    t.date     "birth"
-    t.string   "phone"
-    t.string   "preference"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password"
-    t.boolean  "is_admin"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "is_admin",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.boolean  "email_confirmed"
     t.string   "confirm_token"
   end
