@@ -1,7 +1,7 @@
 
 REGEX_PATTERN = /\A[A-Za-z0-9+_.-]+@[A-Za-z0-9+_.-]*columbia.edu\z/i
 class User < ActiveRecord::Base
-  has_one :userprofile
+  has_one :profile
 
   validates :email, presence: true , uniqueness: true,
             format: { with: REGEX_PATTERN, message: " address is invalid or not a columbia email."}
@@ -24,6 +24,6 @@ class User < ActiveRecord::Base
   end
 
   def create_profile
-    Userprofile.create!(user_id: self.id)
+    Profile.create!(user_id: self.id)
   end
 end

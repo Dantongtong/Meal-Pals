@@ -3,7 +3,12 @@
 <head>
   <title>MealPal</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css">
+
   <%= javascript_include_tag 'application' %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
+
+
   <%= csrf_meta_tags %>
 </head>
 <body id="application">
@@ -17,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Meal Pals</a>
+      <a class="navbar-brand" href="/">Meal Pals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,7 +30,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "#{current_user.first_name}" %></li>
+          <li><%= link_to "#{current_user.first_name}", profiles_path %></li>
           <li> <%= link_to "Sign Out", logout_session_path(session[:user_id]) %></li>
         <% else %>
           <li><%= link_to "Sign In", new_session_path %></li>
