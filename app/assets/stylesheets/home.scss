@@ -9,6 +9,11 @@ img{
 h1{
     margin-bottom: 20px !important;
 }
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .arrange{
     display:flex;
     flex-flow:wrap;

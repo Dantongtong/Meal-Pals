@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20221112154601) do
 
   create_table "timeslots", force: :cascade do |t|
     t.integer  "restaurant_id"
+    t.integer  "owner"
+    t.integer  "guest"
     t.datetime "start_time"
-    t.string   "status"
-    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,9 +60,8 @@ ActiveRecord::Schema.define(version: 20221112154601) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password"
-    t.boolean  "is_admin",        default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.boolean  "email_confirmed"
     t.string   "confirm_token"
   end

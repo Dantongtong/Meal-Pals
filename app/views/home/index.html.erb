@@ -3,9 +3,11 @@
 </head>
 
 <body>
-<h1>Restaurants List</h1>
+<div class = "title">
+  <h1>Restaurants List</h1>
+  <button type="button" class="btn btn-outline-primary"><%= link_to 'New Restaurant', new_restaurant_path %></button>
+</div>
 
-<div><%= flash[:notice] %></div>
 
 
 <div class="container text-center">
@@ -27,8 +29,5 @@
   </div>
 </div>
 
-
-<br>
-<button type="button" class="btn btn-outline-primary"><%= link_to 'New Restaurant', new_restaurant_path %></button>
 </body>
 
