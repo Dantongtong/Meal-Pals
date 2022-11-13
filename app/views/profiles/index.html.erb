@@ -19,8 +19,7 @@
         <div class="card-body text-center">
           <div class="picture-container">
             <div class="picture">
-              <img src="<%= @profile.avatar.url || '/assets/avatar.png' %>" class="picture-src" id="wizardPicturePreview" title="">
-<!--              <input type="file" id="wizard-picture" class="">-->
+              <img src="<%= @profile.avatar.url || blank_avatar %>" class="picture-src" id="wizardPicturePreview" title="">
               <%= f.file_field :avatar, id: "wizard-picture" %>
             </div>
             <h4 class="">Choose Picture</h4>

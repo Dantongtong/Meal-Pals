@@ -7,6 +7,10 @@ class SessionsController < ApplicationController
     if user
       if user.email_confirmed
         session[:user_id] = user.id
+        unless user.profile.avatar.url
+          avatar_list = %w[/assets/1.png /assets/2.png /assets/3.png /assets/4.png /assets/5.png]
+          session[:avatar] = avatar_list.sample
+        end
         flash[:success] = "Log in successfully!"
         redirect_to root_path
       else

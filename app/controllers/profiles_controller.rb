@@ -5,8 +5,6 @@ class ProfilesController < ApplicationController
 
   def create
     profile = Profile.find_by(user_id: session[:user_id])
-    puts profile_params
-
     if profile.update!(profile_params)
       flash[:success] = "Update profile successfully!"
       redirect_to profiles_path
