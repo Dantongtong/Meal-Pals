@@ -34,10 +34,10 @@
 </div>
 
 
-<% if @user.errors.full_messages.any? %>
-  <% @user.errors.full_messages.each do |error_message| %>
-    <div style="color: red"><%= error_message if @user.errors.full_messages.first == error_message %> <br /></div>
-  <% end %>
-<% end %>
+<%# if @user.errors.full_messages.any? %>
+  <%# @user.errors.full_messages.each do |error_message| %>
+<!--    <div style="color: red"><%#= error_message if @user.errors.full_messages.first == error_message %> <br /></div>-->
+  <%# end %>
+<%# end %>
 
-<div><%= flash[:notice] %></div>
+<!--<div><%#= flash[:notice] %></div>-->
