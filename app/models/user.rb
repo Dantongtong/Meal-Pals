@@ -1,5 +1,6 @@
 
 REGEX_PATTERN = /\A[A-Za-z0-9+_.-]+@[A-Za-z0-9+_.-]*columbia.edu\z/i
+
 class User < ActiveRecord::Base
   has_one :profile
 
@@ -24,6 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def create_profile
+
     Profile.create!(user_id: self.id)
   end
 end
