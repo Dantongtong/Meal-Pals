@@ -17,14 +17,16 @@
          Profile Picture
        </h4>
         <div class="card-body text-center">
-          <!-- Profile picture image-->
-          <img class="img-account-profile rounded-circle mb-2" src="<%= @profile.avatar.url if @profile.avatar? %> " alt="">
-          <!-- Profile picture help block-->
-          <div class="small font-italic text-muted mb-4"></div>
-          <!-- Profile picture upload button-->
-          <%= f.file_field :avatar, class: "form-control" %>
-<!--          <input class="form-control" id="avatar" type="file_field" name="avatar" >-->
-<!--          <button class="btn btn-primary" type="button">Upload Avatar</button>-->
+          <div class="picture-container">
+            <div class="picture">
+              <img src="<%= @profile.avatar.url if @profile.avatar? %>" class="picture-src" id="wizardPicturePreview" title="">
+<!--              <input type="file" id="wizard-picture" class="">-->
+              <%= f.file_field :avatar, id: "wizard-picture" %>
+            </div>
+            <h4 class="">Choose Picture</h4>
+
+          </div>
+
         </div>
       </div>
     </div>

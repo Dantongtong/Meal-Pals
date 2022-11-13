@@ -5,7 +5,7 @@
       <%= form_for @user, url: users_path, method: :post, html: {class: 'form-user' } do |f| %>
         <div class="col-sm-12">
           <div class="row">
-            <div class="col-sm-4 form-group">
+            <div class="col-sm-12 form-group">
               <%= label :user, :username, 'Username*' %>
               <%= f.text_field :username, type: 'text', class: "form-control", placeholder: '', required:true, autofocus:true %>
             </div>
