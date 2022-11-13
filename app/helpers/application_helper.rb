@@ -15,4 +15,8 @@ module ApplicationHelper
     end
     false
   end
+
+  def blank_avatar
+    '/assets/0.png'
+  end
 end
