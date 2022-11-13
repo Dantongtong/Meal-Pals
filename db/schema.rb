@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20221112154601) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "avatar",      default: "avatar.png"
+    t.string   "avatar"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"

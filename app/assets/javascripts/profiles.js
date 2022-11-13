@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function(){
 // Prepare the preview for profile picture
-    $("#wizard-picture").change(function(){
+    $("#profile #wizard-picture").change(function(){
         readURL(this);
     });
 });
@@ -11,7 +11,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+            $('#profile #wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
         }
         reader.readAsDataURL(input.files[0]);
     }
