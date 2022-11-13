@@ -57,6 +57,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.3.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+      ssrf_filter (~> 1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     cucumber (3.2.0)
@@ -203,6 +208,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
+    ssrf_filter (1.1.1)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
@@ -223,6 +229,7 @@ DEPENDENCIES
   bootstrap3-datetimepicker-rails (~> 4.17.47)
   byebug
   capybara (= 2.4.4)
+  carrierwave (~> 1.3, >= 1.3.2)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.4.1)

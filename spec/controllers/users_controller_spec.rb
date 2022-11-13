@@ -11,23 +11,23 @@ RSpec.describe UsersController, type: :controller do
   context "user#create" do
     it 'create user successfully' do
       count = User.count
-      post :create, {user: { email: 'rspec@columbia.edu', password: '1234', first_name: 'rspec' }}
+      post :create, {user: { email: 'rspec@columbia.edu', password: '1234', username: 'rspec' }}
       expect(User.count).to eql(count+1)
       expect(response).to redirect_to(new_session_path)
     end
     it 'fail to create user' do
       count = User.count
-      post :create, {user: { email: 'rspec.columbia.edu', password: '1234', first_name: 'rspec' }}
+      post :create, {user: { email: 'rspec.columbia.edu', password: '1234', username: 'rspec' }}
       expect(User.count).to eql(count)
     end
   end
 
   context "user#confirm_email" do
     before(:each) do
-      @user = User.create(email: 'rspec@columbia.edu', password: '1234', first_name: 'rspec')
+      @user = User.create(email: 'rspec@columbia.edu', password: '1234', username: 'rspec')
     end
     it 'activate account successfully' do
-      @user = User.create(email: 'test@columbia.edu', password: '123', first_name: 'test')
+      @user = User.create(email: 'test@columbia.edu', password: '123', username: 'test')
       get :confirm_email, {id: @user.confirm_token}
       @user.reload
       expect(@user.email_confirmed).to be_truthy

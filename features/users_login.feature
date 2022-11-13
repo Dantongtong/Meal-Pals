@@ -6,9 +6,9 @@ Feature: log in
 Background: users in database
 
   Given the following users exist:
-  | email                   | password  | first_name     | middle_name  | last_name | email_confirmed |
-  | confirmed@columbia.edu  | 1234      | test           |    k         |           | true            |
-  | unconfirmed@columbia.edu| 1234      | bob            |              | cc        | false           |
+  | email                   | password  | username     | email_confirmed |
+  | confirmed@columbia.edu  | 1234      | test           | true            |
+  | unconfirmed@columbia.edu| 1234      | bob            | false           |
 
 Scenario: log in with incorrect email
   Given I am on the log in page
