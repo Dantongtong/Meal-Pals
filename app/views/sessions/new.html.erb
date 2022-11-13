@@ -1,5 +1,5 @@
 <div id="sign-in" class="card card-container">
-  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+  <img id="profile-img" class="profile-img-card" src="/assets/avatar.png" />
   <p id="profile-name" class="profile-name-card"></p>
   <%= form_tag sessions_path, method: "post", class: "form-user" do %>
     <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
@@ -8,4 +8,4 @@
   <% end %>
   <%= link_to "Create new account", new_user_path, class: "create-account" %>
 </div><!-- /card-container -->
-<div><%= flash[:notice] %></div>
+<!--<div><%#= flash[:notice] %></div>-->
