@@ -12,7 +12,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
   context "#current_user" do
     it "returns user" do
-      user = User.create(email: 'rspec@columbia.edu', password: '1234', first_name: 'rspec', email_confirmed: true)
+      user = User.create(email: 'rspec@columbia.edu', password: '1234', username: 'rspec', email_confirmed: true)
       session[:user_id] = user.id
       expect(helper.current_user).to eql(user)
     end

@@ -33,7 +33,7 @@ Scenario: sign up with blank password
   Then I press "Sign Up"
   And I should see "Password can't be blank"
 
-Scenario: sign up with blank first_name
+Scenario: sign up with blank username
   Given I am on the sign up page
   And  I fill in "Email*" with "valid@columbia.edu"
   And  I fill in "Password*" with "1234"

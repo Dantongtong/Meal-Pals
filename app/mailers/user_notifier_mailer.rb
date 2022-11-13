@@ -6,6 +6,6 @@ class UserNotifierMailer < ApplicationMailer
     @user = user
     # mail( :to => @user.email,
     #       :subject => 'Thanks for signing up for Meal Pal' )
-    mail(:to => "#{@user.first_name} <#{@user.email}>", :subject => "Registration Confirmation")
+    mail(:to => "#{@user.username} <#{@user.email}>", :subject => "Registration Confirmation")
   end
 end

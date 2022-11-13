@@ -45,5 +45,5 @@ guests.each do |guest|
 end
 
 # add user test data
-User.create([{ email: 'test@columbia.edu', password: '123', first_name: 'test', email_confirmed: true }])
-User.create([{ email: 'admin@columbia.edu', password: '123', first_name: 'admin', email_confirmed: true, is_admin: true }])
+User.create([{ email: 'test@columbia.edu', password: '123', username: 'test', email_confirmed: true }])
+User.create([{ email: 'admin@columbia.edu', password: '123', username: 'admin', email_confirmed: true, is_admin: true }])
