@@ -30,6 +30,8 @@ end
 
 timeslots = [
   { restaurant_id: 1, user_id: 1, status:"Completed", start_time: '2022-10-11 12:37:00' },
+  { restaurant_id: 2, user_id: 1, status:"Upcoming", start_time: '2022-12-11 00:00:00' },
+  { restaurant_id: 3, user_id: 2, status:"Completed", start_time: '2002-10-19 14:43:00' },
 ]
 
 timeslots.each do |timeslot|
@@ -37,7 +39,8 @@ timeslots.each do |timeslot|
 end
 
 guests = [
-  { timeslot_id: 1, user_id: 1 },
+  { timeslot_id: 3, user_id: 1 },
+  { timeslot_id: 1, user_id: 2 },
 ]
 
 guests.each do |guest|

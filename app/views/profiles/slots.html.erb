@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Slots</h1>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#owned">Owned</a></li>
+  <li><a data-toggle="tab" href="#joined">Joined</a></li>
+</ul>
+
+<div class="tab-content" style="margin-top: 5px">
+  <div id="owned" class="tab-pane fade in active">
+    <ul class="list-group list-group-light ">
+      <% @slots_owned.each do |item|%>
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="margin-top: 5px">
+          <div style="display: inline-block">
+            <div class="fw-bold"><%= Restaurant.find_by(id:item.restaurant_id).name %></div>
+            <div class="text-muted"><%= item.start_time %></div>
+          </div>
+          <span class="badge rounded-pill badge-success"><%= item.status %></span>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+  <div id="joined" class="tab-pane fade">
+    <ul class="list-group list-group-light ">
+      <% @slots_joined.each do |guest|%>
+        <% @slot = Timeslot.find(guest.timeslot_id) %>
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="margin-top: 5px">
+          <div style="display: inline-block">
+            <div class="fw-bold"><%= Restaurant.find_by(id:@slot.restaurant_id).name %></div>
+            <div class="text-muted"><%= @slot.start_time %></div>
+          </div>
+          <span class="badge rounded-pill badge-success"><%= @slot.status %></span>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+</div>
+
+
+</body>
+</html>
