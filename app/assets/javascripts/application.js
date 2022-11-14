@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require bootstrap-datepicker
-//= require moment
-//= require bootstrap-datetimepicker
+//= require bootstrap-datepicker.min
+//= require moment.min
+//= require bootstrap-datetimepicker.min
 //= require_tree .
 
