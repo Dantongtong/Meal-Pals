@@ -1,0 +1,36 @@
+<h2>Details about timeslot </h2>
+
+<ul id="details"></ul>
+
+<table class="table table-striped col-md-12" id="timeslot">
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Owner</th>
+      <th>Start Time</th>
+      <th>Guests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+        <%= @timeslot.restaurant_id %>
+    </td>
+    <td>
+        <%= @timeslot.user_id %>
+    </td>
+    <td>
+        <%= @timeslot.start_time %>
+    </td>
+    <td>
+        <% @guests.each do |guest|  %>
+            <td><%= guest.user_id %></td>   
+        <% end %>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row" id="end">
+  <%= link_to 'Back to restaurant detail list', restaurant_path(@timeslot.restaurant_id), class: 'btn btn-primary col-2' %>
+</div>

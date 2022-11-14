@@ -1,6 +1,8 @@
 class TimeslotsController < ApplicationController  
     def new
         @timeslot = Timeslot.new
+        @restaurant_id = session[:restaurant_id]
+        @user = session[:user_id]
     end
 
     def create
@@ -23,23 +25,31 @@ class TimeslotsController < ApplicationController
         redirect_to restaurant_path(restaurant_id)
     end
 
-    def show
+    def edit
         restaurant_id = session[:restaurant_id]
         status = params[:status]
         timeslot_id = params[:id]
         @user_id = session[:user_id]
         @timeslot = Timeslot.find(timeslot_id)
-        if status == 'active'      
-            Guest.create!({'timeslot_id': timeslot_id,'user_id': @user_id })
-            flash[:notice] = "Joined this timeslot successfully."
-        else
-            @guest = Guest.find_by(:timeslot_id =>timeslot_id, :user_id => @user_id )
-            @guest.destroy
-            flash[:notice] = "Exited this timeslot successfully."
+        if @user_id != @timeslot.user_id
+            if status == 'active'      
+                Guest.create!({'timeslot_id': timeslot_id,'user_id': @user_id })
+                flash[:notice] = "Joined this timeslot successfully."
+            else
+                @guest = Guest.find_by(:timeslot_id =>timeslot_id, :user_id => @user_id )
+                @guest.destroy
+                flash[:notice] = "Exited this timeslot successfully."
+            end
+            @timeslot.save!
         end
-        @timeslot.save!
-
         redirect_to restaurant_path(restaurant_id)
+    end
+
+    def show
+        restaurant_id = session[:restaurant_id]
+        timeslot_id = params[:id]
+        @timeslot = Timeslot.find(timeslot_id)
+        @guests = Guest.where(:timeslot_id =>timeslot_id).to_a
     end
 
     def destroy
