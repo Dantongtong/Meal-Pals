@@ -4,6 +4,7 @@ class CreateTimeslots < ActiveRecord::Migration
         t.belongs_to :restaurant
         t.datetime :start_time
         t.string :status
+        t.integer :max_number
         t.belongs_to :user
       end
     end

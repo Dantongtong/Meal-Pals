@@ -29,9 +29,9 @@ reviews.each do |review|
 end
 
 timeslots = [
-  { restaurant_id: 1, user_id: 1, status:"Completed", start_time: '2022-10-11 12:37:00' },
-  { restaurant_id: 2, user_id: 1, status:"Upcoming", start_time: '2022-12-11 00:00:00' },
-  { restaurant_id: 3, user_id: 2, status:"Completed", start_time: '2002-10-19 14:43:00' },
+  { restaurant_id: 1, user_id: 1, status:"Completed", start_time: '2022-10-11 12:37:00', max_number: 6 },
+  { restaurant_id: 2, user_id: 1, status:"Upcoming", start_time: '2022-12-11 00:00:00', max_number: 6 }, 
+  { restaurant_id: 3, user_id: 2, status:"Completed", start_time: '2002-10-19 14:43:00', max_number: 6 }, 
 ]
 
 timeslots.each do |timeslot|
@@ -49,4 +49,5 @@ end
 
 # add user test data
 User.create([{ email: 'test@columbia.edu', password: '123', username: 'test', email_confirmed: true }])
+User.create([{ email: 'test1@columbia.edu', password: '123', username: 'test1', email_confirmed: true }])
 User.create([{ email: 'admin@columbia.edu', password: '123', username: 'admin', email_confirmed: true, is_admin: true }])

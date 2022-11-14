@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20221112154601) do
     t.integer  "restaurant_id"
     t.datetime "start_time"
     t.string   "status"
+    t.integer  "max_number"
     t.integer  "user_id"
   end
 
