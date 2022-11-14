@@ -31,9 +31,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sass-rails', '~> 5.0.3'
 gem 'uglifier', '>= 2.7.1'
 gem 'jquery-rails'
-gem 'bootstrap-datepicker-rails'
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
 
 gem 'carrierwave', '~> 1.3', '>= 1.3.2'
 gem 'fog-aws'
