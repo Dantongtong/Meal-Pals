@@ -14,6 +14,14 @@
 </p>
 
 <table class="table table-striped col-md-12" id="reviews">
+  <thead>
+    <tr>
+      <th>Reviewer</th>
+      <th>Rating</th>
+      <th>Time</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
@@ -34,11 +42,11 @@
   </tbody>
 </table>
 
-<% if session[:user_id]  %>
+<% if current_user  %>
   <%= form_tag reviews_path, :id => 'add_reviews', method: :post do %>
-    <%= label :review, :rating, 'Rating', class: 'col-form-label'  %>
+    <%= label :review, :rating, 'Rate the restaurant:', class: 'col-form-label'  %>
     <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
-    <%= label :review, :comment, 'Comment', class: 'col-form-label' %>
+    <%= label :review, :comment, 'Leave your comment:', class: 'col-form-label' %>
     <%= text_field :review, :comment, class: 'form-control' %>
     <br/>
     <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
@@ -72,38 +80,39 @@
           <td>
             <%= link_to 'Destroy', timeslots_delete_path(timeslot), method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
           </td>
-          <td>
-            <%= link_to 'My profile', timeslots_path, method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
-          </td>
         <% else %>
-          
-          <% if Guest.where(:timeslot_id => timeslot.id).size == 6 %>
+          <% if Guest.where(:timeslot_id => timeslot.id).size == timeslot.max_number %>
             <td>
             <%= 'Full' %>
             </td>
           <% elsif Guest.where(:timeslot_id => timeslot.id , :user_id =>session[:user_id] ).size == 0 %>
             <% if session[:user_id]  %>
               <td>
-              <%= link_to "Join", timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
+              <%= link_to "Join", edit_timeslot_path(timeslot,:status=>"active"), id: timeslot.user_id.to_s+"_Join" %>
               </td>
             <% end %>
           <% end %>
 
           <% if Guest.where(:timeslot_id => timeslot.id , :user_id =>session[:user_id] ).size >= 1 %>
             <td>
-              <%= link_to "Exit", timeslot_path(timeslot,:status=>"inactive") , id: timeslot.user_id.to_s+"_Exit" %>
+              <%= link_to "Exit", edit_timeslot_path(timeslot,:status=>"inactive") , id: timeslot.user_id.to_s+"_Exit" %>
             </td>
           <% end %>
         <% end %>
+        <td>
+          <%= link_to 'Detail', timeslot, id: timeslot.user_id.to_s+"_Detail" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<div><%= flash[:notice] %></div>
+
+
+<button type="button" class="btn btn-outline-primary"><%= link_to 'New timeslot', new_timeslot_path %></button>
 
 <% if session[:user_id]  %>
   <%= form_tag timeslots_path, :id => 'add_timeslots', method: "post" do %>
-    <label for="start_time">Start time</label>
+    <label for="start_time">Create your time slot:</label>
     <div class='input-group date' id='datetimepicker1'>
       <input type='text' name="start_time"  class="form-control" />
       <span class="input-group-addon">

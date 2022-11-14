@@ -8,6 +8,7 @@
       <th>Restaurant</th>
       <th>Owner</th>
       <th>Start Time</th>
+      <th>Maximum</th>
       <th>Guests</th>
     </tr>
   </thead>
@@ -21,6 +22,9 @@
     </td>
     <td>
         <%= @timeslot.start_time %>
+    </td>
+    <td>
+        <%= @timeslot.max_number %>
     </td>
     <td>
         <% @guests.each do |guest|  %>

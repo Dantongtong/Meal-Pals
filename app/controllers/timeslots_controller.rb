@@ -2,7 +2,6 @@ class TimeslotsController < ApplicationController
     def new
         @timeslot = Timeslot.new
         @restaurant_id = session[:restaurant_id]
-        @user = session[:user_id]
     end
 
     def create
@@ -64,6 +63,6 @@ class TimeslotsController < ApplicationController
     end
 
     def timeslot_params
-        params.permit(:start_time)
+        params.require(:timeslot).permit(:restaurant_id, :user_id, :max_number)
     end
   end

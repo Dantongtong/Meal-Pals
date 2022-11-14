@@ -1,5 +1,7 @@
 <h1>New Timeslot</h1>
-
-<%= render 'form' %>
-
+<% if current_user %>
+    <%= render 'form' %>
+<% else %>
+    <%= link_to 'Please log in.', new_session_path %><br>
+<% end %>
 <%= link_to 'Back', restaurant_path(@restaurant_id) %>
