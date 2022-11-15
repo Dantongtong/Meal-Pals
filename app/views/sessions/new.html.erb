@@ -4,7 +4,7 @@
   <%= form_tag sessions_path, method: "post", class: "form-user" do %>
     <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign In</button>
   <% end %>
   <%= link_to "Create new account", new_user_path, class: "create-account" %>
 </div><!-- /card-container -->
