@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
 
-  validates :phone,:numericality => true, :allow_nil => true
+  validates :phone, :allow_blank => true, :numericality => true
 
   mount_uploader :avatar, ImageUploader
 

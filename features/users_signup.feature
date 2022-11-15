@@ -3,6 +3,12 @@ Feature: sign up
   As a new user
   I want to sign up to Meal Pal
 
+Background: users in database
+
+  Given the following users exist:
+  | email                   | password  | username     | email_confirmed | confirm_token |
+  | confirmed@columbia.edu  | 1234      | test         | false           | token         |
+
 Scenario: sign up with invalid email
   Given I am on the sign up page
   And  I fill in "Columbia Email Address*" with "invalid.columbia.edu"
@@ -56,3 +62,13 @@ Scenario: sign up with valid information
   Then I press "Sign Up"
   Then I should be on the log in page
   And I should see "Please confirm your email address to continue"
+
+Scenario: confirm account with a valid token
+  Given I am on the email confirmation page with "token"
+  Then I should be on the log in page
+  And I should see "Welcome to Meal Pal!"
+
+Scenario: confirm account with a invalid token
+  Given I am on the email confirmation page with "invalid_token"
+  Then I should be on the log in page
+  And I should see "Sorry. User does not exist"

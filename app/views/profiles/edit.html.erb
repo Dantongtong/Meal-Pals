@@ -20,7 +20,9 @@
             <div class="picture-container">
               <div class="picture">
                 <img src="<%= @profile.avatar.url || blank_avatar %>" class="picture-src" id="wizardPicturePreview" title="">
-                <%= f.file_field :avatar, id: "wizard-picture" %>
+                <%= label :profile, :avatar, 'Avatar' %>
+                <%= f.file_field :avatar%>
+<!--                , id: "wizard-picture"-->
               </div>
               <h4 class="">Choose Picture</h4>
 
@@ -34,6 +36,9 @@
         <div class="card">
           <h4 class="card-header">
             Account Details
+            <% if is_admin? %>
+            <span style="float: right; margin-right: 3%;">Role: admin</span>
+            <% end %>
           </h4>
           <div class="card-body">
             <!-- Form Row-->
@@ -63,14 +68,14 @@
               <div class="col-md-6">
                 <%= label :profile, :email, 'Email address' %>
                 <%#= f.email_field :email, class: "form-control", placeholder: "Enter your email address", value: @profile.user.email %>
-                <%= f.telephone_field :email, class: "form-control", placeholder: "Enter your email address", value: @profile.user.email %>
+                <%= f.email_field :email, class: "form-control", placeholder: "Enter your email address", value: @profile.user.email %>
 
                 <!--                <input class="form-control" id="email" type="email" placeholder="Enter your email address" value="<%#= @profile.user.email %>">-->
               </div>
               <!-- Form Group (location)-->
               <div class="col-md-6">
                 <%= label :profile, :phone, 'Phone number' %>
-                <%= f.telephone_field :phone, class: "form-control", placeholder: "Enter your phone number", value: @profile.phone %>
+                <%= f.telephone_field :phone, class: "form-control",  value: @profile.phone || nil %>
                 <!--                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="<%#= @profile.phone %>">-->
               </div>
             </div>

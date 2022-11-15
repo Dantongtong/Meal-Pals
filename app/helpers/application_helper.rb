@@ -11,7 +11,7 @@ module ApplicationHelper
   end
   def is_admin?
     if logged_in?
-      User.find(session[:user_id]).is_admin
+      return User.find(session[:user_id]).is_admin
     end
     false
   end
