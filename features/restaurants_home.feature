@@ -6,6 +6,10 @@ Feature: display list of Restaurants
 
 Background: Restaurants have been added to database
 
+  Given the following users exist:
+    | id | email                   | password  | username     | email_confirmed | is_admin |
+    | 1  | confirmed@columbia.edu  | 1234      | test         | true            | true     |
+
   Given the following restaurants exist:
   | name                   | rating | address | details  |
   | Shake Shack            | Good   | 2957 Broadway, New York, NY 10025  | American food  |
@@ -19,8 +23,9 @@ Background: Restaurants have been added to database
 
   Given the following timeslots exist:
 
-  | restaurant_id | user_id |    status   | start_time             |
-  | 1             | 1       | 'Completed' | '2022-10-11 12:37:00'  |
+  | restaurant_id | user_id |    status   | start_time             | max_number |
+  | 1             | 2       | 'Completed' | '2022-10-11 12:37:00'  |  6         |
+  | 1             | 1       | 'Completed' | '2022-10-11 12:37:00'  |  6         |
 
 
 Scenario: check restaurants list
@@ -60,23 +65,69 @@ Scenario: delete restaurant and rating
   Then I should see "Restaurant was successfully destroyed."
 
 Scenario: add reviews
-  Given I am on the home page
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
   Then I press "Detail" with the id of "Shake Shack"
-  When I select "3" from "Rating"
-  When I fill in "Comment" with "Interesting food"
+  When I select "3" from "Rate the restaurant:"
+  When I fill in "Leave your comment:" with "Interesting food"
   And I press "Submit review"
   Then I should see "Interesting food"
 
 Scenario: Join timeslot
-
-
-  Given I am on the home page
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
   Then I press "Detail" with the id of "Shake Shack"
-  Then I press "Join" with the id of "1"
+  Then I press "Join" with the id of "2"
   Then I should see "Joined this timeslot successfully."
 
 Scenario: Exit timeslot
-  Given I am on the home page
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
   Then I press "Detail" with the id of "Shake Shack"
-  Then I press "Exit" with the id of "1"
+  Then I press "Join" with the id of "2"
+  Then I should see "Joined this timeslot successfully."
+  Then I press "Exit" with the id of "2"
   Then I should see "Exited this timeslot successfully."
+
+Scenario: Check the detail of timeslot
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "Join" with the id of "2"
+  Then I should see "Joined this timeslot successfully."
+
+Scenario: Create timeslot
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "New timeslot"
+  Then I am on the new timeslot page
+  And  I fill in "Max number" with "6"
+  And  I fill in "start_time" with "11/20/2022 12:37 PM"
+  Then I press "Create Timeslot" 
+  Then I should see "This timeslot was successfully created."
+
+Scenario: Delete timeslot
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "Detail" with the id of "1"
+  Then I should see "Maximum"

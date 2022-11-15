@@ -26,6 +26,7 @@ module NavigationHelpers
     when /^the details page for "(.+)"$/
       restaurant = Restaurant.find_by(name: $1)
       restaurant_path(restaurant)
+    when /^the new timeslot page$/ then new_timeslot_path
     when /^the new page$/ then new_restaurant_path
       
     else
