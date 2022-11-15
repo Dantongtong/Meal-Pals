@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function(){
 // Prepare the preview for profile picture
-    $("#profile #wizard-picture").change(function(){
+    $("#profile #profile_avatar").change(function(){
         readURL(this);
     });
 });
