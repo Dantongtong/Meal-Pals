@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Please confirm your email address to continue'
       redirect_to new_session_path
     else
+      flash[:error] = "Failed to create account, " + @user.errors.full_messages.first.to_s
       render :action => 'new'
     end
   end

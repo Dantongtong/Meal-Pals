@@ -1,16 +1,16 @@
 class ProfilesController < ApplicationController
-  def index
-    @profile = Profile.find_by(user_id: session[:user_id])
+  def edit
+    @profile = Profile.find(params[:id])
   end
 
-  def create
-    profile = Profile.find_by(user_id: session[:user_id])
-    if profile.update!(profile_params)
+  def update
+    profile = Profile.find(params[:id])
+    if profile.update(profile_params)
       flash[:success] = "Update profile successfully!"
-      redirect_to profiles_path
+      redirect_to edit_profile_path(profile.id)
     else
-      flash[:error] = "Failed to update."
-      redirect_to profiles_path
+      flash[:error] = "Failed to update, " + profile.errors.full_messages.first.to_s
+      redirect_to edit_profile_path(profile.id)
     end
   end
 

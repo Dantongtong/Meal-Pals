@@ -16,6 +16,8 @@ module NavigationHelpers
     when /^the home page$/ then root_path
     when /^the log in page$/ then new_session_path
     when /^the sign up page$/ then new_user_path
+    when /^the profile page with id = (.*)$/
+      edit_profile_path($1.to_i)
     when /^the edit page for "(.*)"$/
       restaurant = Restaurant.find_by(name: $1)
       edit_restaurant_path(restaurant)
