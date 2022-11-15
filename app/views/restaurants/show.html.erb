@@ -78,7 +78,7 @@
         <% end %>
         <% if session[:user_id] == timeslot.user_id %>
           <td>
-            <%= link_to 'Destroy', timeslots_delete_path(timeslot), method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
+            <%= link_to 'Delete', timeslots_delete_path(timeslot), method: :delete, data: { confirm: 'Are you sure?' }, id: timeslot.user_id.to_s+"_Delete" %>
           </td>
         <% else %>
           <% if Guest.where(:timeslot_id => timeslot.id).size == timeslot.max_number %>
@@ -110,26 +110,6 @@
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'New timeslot', new_timeslot_path %></button>
 
-<% if session[:user_id]  %>
-  <%= form_tag timeslots_path, :id => 'add_timeslots', method: "post" do %>
-    <label for="start_time">Create your time slot:</label>
-    <div class='input-group date' id='datetimepicker1'>
-      <input type='text' name="start_time"  class="form-control" />
-      <span class="input-group-addon">
-      <span class="glyphicon glyphicon-calendar"></span>
-      </span>
-    </div>
-<!--    <script type="text/javascript">-->
-<!--        $(function () {-->
-<!--          $('#datetimepicker1').datetimepicker({-->
-<!--            inline: true,-->
-<!--            sideBySide: true-->
-<!--          });-->
-<!--        });-->
-<!--    </script>-->
-    <input type="submit" class="btn btn-primary" value="Create a slot" />
-  <% end %>
-<% end %>
 <div class="row" id="end">
   <%= link_to 'Back to restaurant list', root_path, class: 'btn btn-primary col-2' %>
 </div>
