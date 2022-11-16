@@ -62,11 +62,10 @@ Rails.application.routes.draw do
   resources :sessions do
     member do
       get :logout
+      get :slots
     end
   end
-  resources :profiles do
-    get :slots
-  end
+  resources :profiles
   resources :restaurants, except: [:destroy]
   delete '/restaurants/:id/delete' => 'restaurants#destroy', as: 'restaurants_delete'
   get '/restaurants/:id/delete' => 'restaurants#destroy'

@@ -30,7 +30,7 @@ Scenario: fail to update my profile
   Then I should be on the profile page with id = 2
   And I should see "Failed to update"
 
-Scenario: confirm account with a valid token
+Scenario: show my slots
   Given I am on the my slots page with id = 1
   And I should see "My Slots"
 

@@ -19,7 +19,7 @@ module NavigationHelpers
     when /^the email confirmation page with "(.*)"$/ then confirm_email_user_url($1)
     when /^the sign out page with id = (.*)$/ then logout_session_path($1.to_i)
     when /^the profile page with id = (.*)$/ then edit_profile_path($1.to_i)
-    when /^the my slots page with id = (.*)$/ then profile_slots_path($1.to_i)
+    when /^the my slots page with id = (.*)$/ then slots_session_path($1.to_i)
     when /^the edit page for "(.*)"$/
       restaurant = Restaurant.find_by(name: $1)
       edit_restaurant_path(restaurant)

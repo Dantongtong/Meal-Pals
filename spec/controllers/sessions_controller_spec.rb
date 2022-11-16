@@ -29,4 +29,15 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to redirect_to(root_path)
     end
   end
+
+  context "session#slots" do
+    before(:each) do
+      @user_id = 1
+      @slot = Timeslot.create(restaurant_id: 1, user_id: @user_id, status:"Completed", start_time: '2022-10-11 12:37:00', max_number: 6)
+    end
+    it "show my slots" do
+      get :slots, {id: @user_id}
+      expect(response).to render_template('slots')
+    end
+  end
 end
