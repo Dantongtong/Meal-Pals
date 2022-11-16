@@ -17,6 +17,14 @@ RSpec.describe TimeslotsController, type: :controller do
       }.to change(Timeslot, :count).by(1)
       expect(response).to redirect_to(restaurant_path(1))
     end
+
+    it "fails to create a new timeslot without filling" do
+      count = Timeslot.count
+      request.session[:restaurant_id] = 1
+      post :create, {timeslot: {restaurant_id: 1, user_id: 1, max_number: 6}, start_time: ''}
+      expect(Timeslot.count).to eql(count)
+      expect(response).to redirect_to(restaurant_path(1))
+    end
   end
 
   describe "GET #show" do
@@ -29,7 +37,7 @@ RSpec.describe TimeslotsController, type: :controller do
     
   describe "GET #edit" do
     it "join a timeslot" do    
-      @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 1, status: 'Completed', start_time: '2022-10-11 12:37:00', max_number: 6)
+      @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 2, status: 'Completed', start_time: '2022-10-11 12:37:00', max_number: 6)
       request.session[:user_id] = 1
       request.session[:restaurant_id] = 1
       get :edit, {:id => @timeslot.id, :status => 'active'}
@@ -38,7 +46,8 @@ RSpec.describe TimeslotsController, type: :controller do
     end
 
     it "exit a timeslot" do
-      @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 1, status: 'Completed', start_time: '2022-10-11 12:37:00', max_number: 6)
+      @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 2, status: 'Completed', start_time: '2022-10-11 12:37:00', max_number: 6)
+      @guest = Guest.create!(timeslot_id: 1, user_id: 1)
       request.session[:user_id] = 1
       request.session[:restaurant_id] = 1
       get :edit, {:id => @timeslot.id, :status => nil}
@@ -50,6 +59,7 @@ RSpec.describe TimeslotsController, type: :controller do
   context "timeslot#destroy" do
     it "destroys the timeslot" do
       @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 1, status: 'Completed', start_time: '2022-10-11 12:37:00', max_number: 6)
+      @guest = Guest.create!(timeslot_id: 1, user_id: 2)
       request.session[:user_id] = 1
       request.session[:restaurant_id] = 1
       expect {
