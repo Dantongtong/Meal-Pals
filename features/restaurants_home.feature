@@ -78,6 +78,18 @@ Scenario: add reviews
   And I press "Submit review"
   Then I should see "Interesting food"
 
+Scenario: fail to add empty reviews
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  When I select "3" from "Rate the restaurant (5 to 1: Excellent to Bad):"
+  When I fill in "Leave your comment" with ""
+  And I press "Submit review"
+  Then I should see "Please enter your comments."
+
 Scenario: Join timeslot
   Given I am on the log in page
   And  I fill in "email" with "confirmed@columbia.edu"
