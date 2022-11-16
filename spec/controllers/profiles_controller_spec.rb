@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'carrierwave/test/matchers'
 
 RSpec.describe ProfilesController, type: :controller do
   before(:each) do
@@ -13,7 +14,7 @@ RSpec.describe ProfilesController, type: :controller do
 
   describe "profile#update" do
     it "update profile" do
-      put :update, {id: 2, profile: {phone: '1111', gender: 'Male'}}
+      put :update, {id: 2, profile: {phone: '1111', gender: 'Male', avatar: fixture_file_upload( '/1.png', "image/png")}}
       @profile.reload
       expect(@profile.phone).to eql('1111')
       expect(response).to redirect_to(edit_profile_path(2))
@@ -23,4 +24,7 @@ RSpec.describe ProfilesController, type: :controller do
       expect(response).to redirect_to(edit_profile_path(2))
     end
   end
+
+
+
 end
