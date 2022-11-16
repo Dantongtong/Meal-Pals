@@ -54,7 +54,7 @@
 <% if current_user  %>
   <h4>New Review</h3>
   <%= form_tag reviews_path, :id => 'add_reviews', method: :post do %>
-    <%= label :review, :rating, 'Rate the restaurant:', class: 'col-form-label' %>
+    <%= label :review, :rating, 'Rate the restaurant (5 to 1: Excellent to Bad):', class: 'col-form-label' %>
     <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'col-1'} %>
     <br></br>
     <%= label :review, :comment, 'Leave your comment', class: 'col-form-label' %>
