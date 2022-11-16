@@ -35,7 +35,7 @@ Test User:
   
   
 Don't forget to add **SENDGRID_API_KEY, S3_ACCESS_KEY, S3_SECRET_KEY** to `application.yml` under the config directory.
-> SENDGRID_API_KEY is the key for sending confirm email  
+> SENDGRID_API_KEY is the key for sending confirm email in registration progress
 > S3_ACCESS_KEY and S3_SECRET_KEY are keys for AWS S3 Bucket access
 
 In browser, open http://localhost:3000
