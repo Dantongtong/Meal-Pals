@@ -8,6 +8,7 @@ RSpec.describe ProfilesController, type: :controller do
   describe "profile#edit" do
     it "show profile info" do
       get :edit, {id: @profile.id}
+      expect(@profile.avatar.url).to match("/assets/fallback/default")
       expect(response).to render_template('edit')
     end
   end

@@ -17,7 +17,7 @@ Scenario: success to update my profile
   Given I am on the profile page with id = 2
   And  I fill in "First Name" with "confirmed_first"
   And  I fill in "Phone" with "1234321"
-  When I attach "Avatar" to "/app/assets/images/1.png"
+  When I attach "Avatar" to "/spec/fixtures/1.png"
   Then I press "Save changes"
   Then I should be on the profile page with id = 2
   And I should see "Update profile successfully"
