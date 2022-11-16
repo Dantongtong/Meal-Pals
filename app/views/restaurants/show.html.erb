@@ -6,13 +6,22 @@
     Rating:
     <%= @restaurant.rating %>
   </li>
+  <li>
+    Address:
+    <%= @restaurant.address %>
+  </li>
+  <li>
+    Details:
+    <%= @restaurant.details %>
+  </li>
 </ul>
 
-<h3>Description:</h3>
+<h3>Description</h3>
 <p id="description">
   <%= @restaurant.details %>
 </p>
 
+<h3>Review</h3>
 <table class="table table-striped col-md-12" id="reviews">
   <thead>
     <tr>
@@ -43,16 +52,19 @@
 </table>
 
 <% if current_user  %>
+  <h4>New Review</h3>
   <%= form_tag reviews_path, :id => 'add_reviews', method: :post do %>
-    <%= label :review, :rating, 'Rate the restaurant:', class: 'col-form-label'  %>
-    <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'form-control col-1'} %>
-    <%= label :review, :comment, 'Leave your comment:', class: 'col-form-label' %>
+    <%= label :review, :rating, 'Rate the restaurant (5 to 1: Excellent to Bad):', class: 'col-form-label' %>
+    <%= select :review, :rating, ['1','2','3','4','5'], {}, {class: 'col-1'} %>
+    <br></br>
+    <%= label :review, :comment, 'Leave your comment', class: 'col-form-label' %>
     <%= text_field :review, :comment, class: 'form-control' %>
     <br/>
     <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
   <% end %>
 <% end %>
 
+<h3>Timeslot</h3>
 <table class="table table-striped col-md-12" id="timeslot">
   <tbody>
     <% @timeslots.each do |timeslot| %>
@@ -109,7 +121,7 @@
 
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'New timeslot', new_timeslot_path %></button>
-
-<div class="row" id="end">
+<br></br>
+<div id="end">
   <%= link_to 'Back to restaurant list', root_path, class: 'btn btn-primary col-2' %>
 </div>
