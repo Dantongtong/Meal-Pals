@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
 
   def slots
     user_id = params[:id]
-    puts "user_id: " + user_id
     @slots_owned = Timeslot.where(user_id: user_id).to_a
     @slots_joined = Guest.where(user_id: user_id).to_a
   end
