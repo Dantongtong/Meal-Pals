@@ -19,7 +19,7 @@
           <div class="card-body text-center">
             <div class="picture-container">
               <div class="picture">
-                <img src="<%= @profile.avatar.url || blank_avatar %>" class="picture-src" id="wizardPicturePreview" title="">
+                <img src="<%= @profile.avatar.url %>" class="picture-src" id="wizardPicturePreview" title="">
                 <%= label :profile, :avatar, 'Avatar' %>
                 <%= f.file_field :avatar%>
 <!--                , id: "wizard-picture"-->
