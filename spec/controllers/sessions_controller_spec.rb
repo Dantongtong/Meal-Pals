@@ -33,7 +33,7 @@ RSpec.describe SessionsController, type: :controller do
   context "session#slots" do
     before(:each) do
       @user_id = 1
-      @slot = Timeslot.create(restaurant_id: 1, user_id: @user_id, status:"Completed", start_time: '2022-10-11 12:37:00', max_number: 6)
+      @slot = Timeslot.create(restaurant_id: 1, user_id: @user_id, start_time: '2022-10-11 12:37:00', max_number: 6)
     end
     it "show my slots" do
       get :slots, {id: @user_id}
