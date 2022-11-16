@@ -32,12 +32,5 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  context "#blank_avatar" do
-    it "returns avatar" do
-      user = User.create(email: 'rspec@columbia.edu', password: '1234', username: 'rspec', email_confirmed: true)
-      session[:user_id] = user.id
-      expect(helper.blank_avatar).to eql('/assets/0.png')
-    end
 
-  end
 end

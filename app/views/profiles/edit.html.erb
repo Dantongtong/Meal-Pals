@@ -42,6 +42,14 @@
           </h4>
           <div class="card-body">
             <!-- Form Row-->
+            <div class="row">
+              <div class="col-md-12">
+                <!--                <label class="small mb-1" for="first_name">First name</label>-->
+                <%= label :profile, :username, 'Username (Readonly)' %>
+                <%= f.text_field :username, class: "form-control" , placeholder: "Enter your username", :readonly => true, value: @profile.user.username %>
+                <!--                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="<%#= @profile.first_name %>">-->
+              </div>
+            </div>
             <div class="row gx-3 mb-3">
               <!-- Form Group (first name)-->
               <div class="col-md-4">
@@ -66,16 +74,16 @@
             <div class="row gx-3 mb-3">
               <!-- Form Group (organization name)-->
               <div class="col-md-6">
-                <%= label :profile, :email, 'Email address' %>
+                <%= label :profile, :email, 'Email address (Readonly)' %>
                 <%#= f.email_field :email, class: "form-control", placeholder: "Enter your email address", value: @profile.user.email %>
-                <%= f.email_field :email, class: "form-control", placeholder: "Enter your email address", value: @profile.user.email %>
+                <%= f.email_field :email, class: "form-control", :readonly => true, value: @profile.user.email %>
 
                 <!--                <input class="form-control" id="email" type="email" placeholder="Enter your email address" value="<%#= @profile.user.email %>">-->
               </div>
               <!-- Form Group (location)-->
               <div class="col-md-6">
                 <%= label :profile, :phone, 'Phone number' %>
-                <%= f.telephone_field :phone, class: "form-control",  value: @profile.phone || nil %>
+                <%= f.telephone_field :phone, class: "form-control",placeholder: "Enter your phone number",  value: @profile.phone || nil %>
                 <!--                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="<%#= @profile.phone %>">-->
               </div>
             </div>
