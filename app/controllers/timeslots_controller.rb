@@ -59,7 +59,8 @@ class TimeslotsController < ApplicationController
             g.destroy
           end
         @timeslot.destroy
-        redirect_to restaurant_path(restaurant_id), notice: 'Timeslot was successfully destroyed.'
+        redirect_to restaurant_path(restaurant_id)
+        flash[:notice] ='Timeslot was successfully destroyed.'
     end
 
     def timeslot_params

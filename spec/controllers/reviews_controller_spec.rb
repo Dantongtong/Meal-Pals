@@ -1,12 +1,5 @@
 require 'rails_helper'
 
-
-
-
-
-
-
-
 RSpec.describe ReviewsController, type: :controller do
     
   describe "create" do
@@ -19,6 +12,16 @@ RSpec.describe ReviewsController, type: :controller do
       expect(response).to redirect_to(restaurant_path(1))
 
     end
+
+    it "empty review" do
+      request.session[:user_id] = 1
+      request.session[:restaurant_id] = 1
+      count = Review.count
+      post :create, {review: { rating: 1, comment: ''}}
+      expect(Review.count).to eql(count)
+      expect(response).to redirect_to(restaurant_path(1))
+    end
+
 
     it "fail to create a new review" do
       class Fake
