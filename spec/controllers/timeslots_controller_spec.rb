@@ -107,21 +107,21 @@ RSpec.describe TimeslotsController, type: :controller do
       expect(Timeslot.count).to eql(count+1)    
     end
 
-    it "fail to create a new timeslot" do
-      class Fake
-        attr_accessor :save
-      end
+    # it "fail to create a new timeslot" do
+    #   class Fake
+    #     attr_accessor :save
+    #   end
         
-      request.session[:user_id] = 1
-      request.session[:restaurant_id] = 1
-      count = Timeslot.count
-      @fake_res = Fake.new
-      @fake_res.save = false
-      count = Timeslot.count
-      Timeslot.stub(:create!).and_return(@fake_res)
-      post :create, {start_time: '11/16/2022 12:55 PM', timeslot: { restaurant_id: 1, user_id: 1, max_number: 6, start_time: '11/16/2022 12:55 PM' }}
-      expect(Timeslot.count).to eql(count)
-    end
+    #   request.session[:user_id] = 1
+    #   request.session[:restaurant_id] = 1
+    #   count = Timeslot.count
+    #   @fake_res = Fake.new
+    #   @fake_res.save = false
+    #   count = Timeslot.count
+    #   Timeslot.stub(:create!).and_return(@fake_res)
+    #   post :create, {start_time: '11/16/2022 12:55 PM', timeslot: { restaurant_id: 1, user_id: 1, max_number: 6, start_time: '11/16/2022 12:55 PM' }}
+    #   expect(Timeslot.count).to eql(count)
+    # end
   end
 
   context "timeslot#show" do

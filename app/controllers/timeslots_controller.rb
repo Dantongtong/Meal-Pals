@@ -13,11 +13,11 @@ class TimeslotsController < ApplicationController
             ts['restaurant_id'] = restaurant_id
             ts['user_id'] = user_id
             @timeslot = Timeslot.create!(ts)
-            if @timeslot.save
+            # if @timeslot.save
             flash[:notice] = "This timeslot was successfully created."
-            else
-            flash[:notice] = "This timeslot failed to be created."
-            end
+            # else
+            # flash[:notice] = "This timeslot failed to be created."
+            # end
         else
             flash[:notice] = "Please select a valid time slot."
         end
