@@ -1,0 +1,32 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+
+# add api key of sendgrid
+SENDGRID_API_KEY: 'API-KEY'
+
+# sender of mail service
+FROM_MAIL: 'saasmealpal@gmail.com'
+
+# aws s3
+S3_ACCESS_KEY: 'ACCESS_KEY'
+S3_SECRET_KEY: 'SECRET_KEY'
+S3_REGION: 'us-east-1'
+S3_BUCKET: 'mealpal'
+
+# host
+development:
+  HOST: 'localhost:3000'
+test:
+  HOST: 'localhost:3000'
+production:
+  HOST: "https://mealpal-saas.herokuapp.com/"
