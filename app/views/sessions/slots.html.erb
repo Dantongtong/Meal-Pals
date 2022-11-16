@@ -15,13 +15,15 @@
   <div id="owned" class="tab-pane fade in active">
     <ul class="list-group list-group-light ">
       <% @slots_owned.each do |item|%>
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="margin-top: 5px">
-          <div style="display: inline-block">
-            <div class="fw-bold"><%= Restaurant.find_by(id:item.restaurant_id).name %></div>
-            <div class="text-muted"><%= item.start_time %></div>
-          </div>
-          <span class="badge rounded-pill badge-success"><%= item.status %></span>
-        </li>
+        <a href="<%=timeslot_path(item.id) %>">
+          <li class="list-group-item d-flex justify-content-between align-items-center" style="margin-top: 5px">
+            <div style="display: inline-block">
+              <div class="fw-bold"><%= Restaurant.find_by(id:item.restaurant_id).name %></div>
+              <div class="text-muted"><%= item.start_time %></div>
+            </div>
+            <span class="badge rounded-pill badge-success"><%= item.status %></span>
+          </li>
+        </a>
       <% end %>
     </ul>
 
@@ -29,6 +31,7 @@
   <div id="joined" class="tab-pane fade">
     <ul class="list-group list-group-light ">
       <% @slots_joined.each do |guest|%>
+        <a href="<%= timeslot_path(guest.timeslot_id) %>">
         <% @slot = Timeslot.find(guest.timeslot_id) %>
         <li class="list-group-item d-flex justify-content-between align-items-center" style="margin-top: 5px">
           <div style="display: inline-block">
@@ -37,6 +40,7 @@
           </div>
           <span class="badge rounded-pill badge-success"><%= @slot.status %></span>
         </li>
+        </a>
       <% end %>
     </ul>
 
