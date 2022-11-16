@@ -62,7 +62,11 @@ Scenario: revise and update restaurant information
   And I should see "Restaurant was successfully updated."
 
 Scenario: delete restaurant and rating
-  Given I am on the home page 
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
   When I press "Destroy" with the id of "Thai Market"
   Then I should see "Restaurant was successfully destroyed."
 
