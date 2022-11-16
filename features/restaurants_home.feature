@@ -22,9 +22,9 @@ Background: Restaurants have been added to database
   Then 5 restaurants should exist
 
   Given the following timeslots exist:
-  | restaurant_id | user_id |    status   | start_time             | max_number |
-  | 1             | 2       | 'Completed' | '2022-10-11 12:37:00'  |  6         |
-  | 1             | 1       | 'Completed' | '2022-10-11 12:37:00'  |  6         |
+  | restaurant_id | user_id |    start_time           | max_number |
+  | 1             | 2       |  '2022-10-11 12:37:00'  |  6         |
+  | 1             | 1       |  '2022-10-11 12:37:00'  |  6         |
 
   Given the following guests exist:
   | timeslot_id   | user_id |    

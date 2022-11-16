@@ -29,7 +29,7 @@ RSpec.describe TimeslotsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 1, status: 'Completed', start_time: '2022-10-11 12:37:00', max_number: 6)
+      @timeslot = Timeslot.create!(restaurant_id: 1, user_id: 1, start_time: '2022-10-11 12:37:00', max_number: 6)
       get :show, {:id => @timeslot.id}
       expect(response).to be_success
     end
