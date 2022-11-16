@@ -8,11 +8,11 @@ class ReviewsController < ApplicationController
     # @restaurant = Restaurant.find(restaurant_id)
     if rv['comment'] != ''
       @review = Review.create!(rv)
-      if @review.save
+      # if @review.save
         flash[:notice] = "This review was successfully created."
-      else
-        flash[:notice] = "This review failed to be created."
-      end
+      # else
+      #   flash[:notice] = "This review failed to be created."
+      # end
     else
       flash[:notice] = "Please enter your comments."
     end
