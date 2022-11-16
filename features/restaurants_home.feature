@@ -22,11 +22,13 @@ Background: Restaurants have been added to database
   Then 5 restaurants should exist
 
   Given the following timeslots exist:
-
   | restaurant_id | user_id |    status   | start_time             | max_number |
   | 1             | 2       | 'Completed' | '2022-10-11 12:37:00'  |  6         |
   | 1             | 1       | 'Completed' | '2022-10-11 12:37:00'  |  6         |
 
+  Given the following guests exist:
+  | timeslot_id   | user_id |    
+  | 2             | 2       | 
 
 Scenario: check restaurants list
   Given I am on the home page 
@@ -71,8 +73,8 @@ Scenario: add reviews
   Then I press "Sign In"
   Then I should be on the home page
   Then I press "Detail" with the id of "Shake Shack"
-  When I select "3" from "Rate the restaurant:"
-  When I fill in "Leave your comment:" with "Interesting food"
+  When I select "3" from "Rate the restaurant (5 to 1: Excellent to Bad):"
+  When I fill in "Leave your comment" with "Interesting food"
   And I press "Submit review"
   Then I should see "Interesting food"
 
@@ -121,8 +123,8 @@ Scenario: Create timeslot
   And  I fill in "start_time" with "11/20/2022 12:37 PM"
   Then I press "Create Timeslot" 
   Then I should see "This timeslot was successfully created."
-
-Scenario: Delete timeslot
+  
+Scenario: Detail timeslot
   Given I am on the log in page
   And  I fill in "email" with "confirmed@columbia.edu"
   And  I fill in "password" with "1234"
@@ -131,3 +133,27 @@ Scenario: Delete timeslot
   Then I press "Detail" with the id of "Shake Shack"
   Then I press "Detail" with the id of "1"
   Then I should see "Maximum"
+
+Scenario: Delete timeslot
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "Delete" with the id of "1"
+  Then I should see "Timeslot was successfully destroyed."
+
+Scenario: Create timeslot with an invalid start time
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I should be on the home page
+  Then I press "Detail" with the id of "Shake Shack"
+  Then I press "New timeslot"
+  Then I am on the new timeslot page
+  And  I fill in "Max number" with "6"
+  And  I fill in "start_time" with ""
+  Then I press "Create Timeslot" 
+  Then I should see "Please select a valid time slot."
