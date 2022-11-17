@@ -45,7 +45,11 @@ Scenario: check restaurant details
 
 
 Scenario: add new restaurant
-  Given I am on the home page
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I am on the home page
   When I press "New Restaurant"
   Then I am on the new page
   And I fill in "restaurant_name" with "KFC" 
