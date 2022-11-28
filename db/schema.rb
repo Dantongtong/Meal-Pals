@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20221112154601) do
   create_table "timeslots", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.datetime "start_time"
+    t.string   "status"
     t.integer  "max_number"
     t.integer  "user_id"
   end

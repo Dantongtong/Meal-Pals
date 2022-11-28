@@ -23,8 +23,8 @@
           <p class="card-text">Address:<%= restaurant.address %></p>
           <p class="card-text">Details:<%= restaurant.details %></p>
           <a><%= link_to 'Detail', restaurant, id: restaurant.name.parameterize.underscore+"_Detail" %></a>
-          <a><%= link_to 'Edit', edit_restaurant_path(restaurant), id: restaurant.name.parameterize.underscore+"_Edit"%></a>
           <% if is_admin? %>
+            <a><%= link_to 'Edit', edit_restaurant_path(restaurant), id: restaurant.name.parameterize.underscore+"_Edit"%></a>
             <a><%= link_to 'Destroy', restaurants_delete_path(restaurant), method: :delete, data: { confirm: 'Do you want to delete the restaurant?' }, id: restaurant.name.parameterize.underscore+"_Destroy"%></a>
           <% end %>
           
