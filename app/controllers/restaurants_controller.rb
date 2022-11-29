@@ -28,8 +28,13 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   def update
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update_attributes!(restaurant_params)
-    redirect_to root_url, notice: 'Restaurant was successfully updated.'
+    if @restaurant.update_attributes!(restaurant_params)
+      flash[:success] = "Restaurant was successfully updated."
+      redirect_to root_url
+    else
+      flash[:error] = "Failed to update restaurant information."
+      redirect_to edit_restaurant_path(restaurant.id)
+    end
   end
 
   # DELETE 
@@ -41,6 +46,6 @@ class RestaurantsController < ApplicationController
 
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name, :rating, :address, :details)
+      params.require(:restaurant).permit(:name, :rating, :address, :details, :image)
     end
 end
