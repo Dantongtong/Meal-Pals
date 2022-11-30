@@ -21,8 +21,14 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants
   def create
-    @restaurant = Restaurant.create!(restaurant_params)
-    redirect_to root_url, notice: 'Restaurant was successfully created.'
+    puts restaurant_params
+    if restaurant_params["name"] != '' && restaurant_params["rating"] != '' && restaurant_params["address"] != '' && restaurant_params["details"] != ''
+      @restaurant = Restaurant.create!(restaurant_params)
+      redirect_to root_url, notice: 'Restaurant was successfully created.'
+    else
+      flash[:error] = 'Failed to create the new restaurant. Please fill all the blank before submit.'
+      redirect_to root_url
+    end
   end
 
   # PATCH/PUT /restaurants/1
