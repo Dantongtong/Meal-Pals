@@ -39,6 +39,11 @@ RSpec.describe RestaurantsController, type: :controller do
       post :create, {restaurant: {name: 'Ramen Soup', rating: 'Good', details: 'Japanese food'}}
       expect(response).to redirect_to(root_path)
     end
+
+    it "fails to create a new Restaurant" do
+      post :create, {restaurant: {name: 'Ramen Soup', rating: 'Good'}}
+      expect(response).to redirect_to(root_path)
+    end
   end
 
   describe "PUT #update" do

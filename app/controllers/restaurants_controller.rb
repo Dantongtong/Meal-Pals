@@ -37,9 +37,6 @@ class RestaurantsController < ApplicationController
     if @restaurant.update_attributes!(restaurant_params)
       flash[:success] = "Restaurant was successfully updated."
       redirect_to root_url
-    else
-      flash[:error] = "Failed to update restaurant information."
-      redirect_to edit_restaurant_path(restaurant.id)
     end
   end
 

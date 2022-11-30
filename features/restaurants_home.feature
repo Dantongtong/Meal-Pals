@@ -42,8 +42,6 @@ Scenario: check restaurant details
   When I press "Detail" with the id of "Shake Shack"
   Then I am on the details page for "Shake Shack"
 
-
-
 Scenario: add new restaurant
   Given I am on the log in page
   And  I fill in "email" with "confirmed@columbia.edu"
@@ -52,12 +50,32 @@ Scenario: add new restaurant
   Then I am on the home page
   When I press "New Restaurant"
   Then I am on the new page
-  And I fill in "restaurant_name" with "KFC" 
+  And I fill in "restaurant_name" with "KFC"
+  And I fill in "restaurant_rating" with "4"
+  And I fill in "restaurant_address" with "108th St & End Ave  Manhattan Valley"
+  And I fill in "restaurant_details" with "American food" 
   And I press "Create Restaurant"
   Then I should see "Restaurant was successfully created."
 
+Scenario: fail to add new restaurant
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I am on the home page
+  When I press "New Restaurant"
+  Then I am on the new page
+  And I fill in "restaurant_name" with "KFC"
+  And I fill in "restaurant_rating" with "4"
+  And I press "Create Restaurant"
+  Then I should see "Failed to create the new restaurant. Please fill all the blank before submit."
+
 Scenario: revise and update restaurant information
-  Given I am on the home page
+  Given I am on the log in page
+  And  I fill in "email" with "confirmed@columbia.edu"
+  And  I fill in "password" with "1234"
+  Then I press "Sign In"
+  Then I am on the home page
   When I press "Edit" with the id of "Saiguette"
   Then I am on the edit page for "Saiguette"
   And I fill in "restaurant_rating" with "Excellent"
