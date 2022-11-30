@@ -1,5 +1,8 @@
 # Meal-Pals
 
+## Introduction
+It’s a social platform that allows Columbia students to hunt for meal pals. They share their available time slots or join others' slots on the Meal Pal application! The application could be regarded as a combination of campus gourmet guidance and social media platform. Columbia students could not only hunt for gourmet food nearby but meet new friends on campus. 
+
 ## Ruby version
 ruby: 2.6.6  
 rails: 4.2.10
