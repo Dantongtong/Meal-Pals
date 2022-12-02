@@ -9,6 +9,7 @@ Background: Restaurants have been added to database
   Given the following users exist:
     | id | email                   | password  | username     | email_confirmed | is_admin |
     | 1  | confirmed@columbia.edu  | 1234      | test         | true            | true     |
+    | 2  | test1@columbia.edu      | 1234      | test         | true            | true     |
 
   Given the following restaurants exist:
   | name                   | rating | address | details  |
@@ -99,7 +100,7 @@ Scenario: add reviews
   Then I press "Sign In"
   Then I should be on the home page
   Then I press "Detail" with the id of "Shake Shack"
-  When I select "3" from "Rate the restaurant (5 to 1: Excellent to Bad):"
+  When I choose "review_rating_5" 
   When I fill in "Leave your comment" with "Interesting food"
   And I press "Submit review"
   Then I should see "Interesting food"
@@ -111,7 +112,7 @@ Scenario: fail to add empty reviews
   Then I press "Sign In"
   Then I should be on the home page
   Then I press "Detail" with the id of "Shake Shack"
-  When I select "3" from "Rate the restaurant (5 to 1: Excellent to Bad):"
+  When I choose "review_rating_3" 
   When I fill in "Leave your comment" with ""
   And I press "Submit review"
   Then I should see "Please enter your comments."
