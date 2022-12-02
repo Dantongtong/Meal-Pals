@@ -15,10 +15,10 @@
   <tbody>
     <tr>
     <td>
-        <%= @timeslot.restaurant_id %>
+        <%= Restaurant.find(@timeslot.restaurant_id).name %>
     </td>
     <td>
-        <%= @timeslot.user_id %>
+        <%= User.find(@timeslot.user_id).username %>
     </td>
     <td>
         <%= @timeslot.start_time %>
@@ -28,7 +28,7 @@
     </td>
     <td>
         <% @guests.each do |guest|  %>
-            <td><%= guest.user_id %></td>   
+            <td><%= User.find(guest.user_id).username %></td>   
         <% end %>
     </td>
     </tr>

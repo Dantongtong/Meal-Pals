@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # add user test data
 User.create([{ email: 'test@columbia.edu', password: '123', username: 'test', email_confirmed: true }])
+User.create([{ email: 'test1@columbia.edu', password: '123', username: 'test1', email_confirmed: true }])
 User.create([{ email: 'admin@columbia.edu', password: '123', username: 'admin', email_confirmed: true, is_admin: true }])
 
 
