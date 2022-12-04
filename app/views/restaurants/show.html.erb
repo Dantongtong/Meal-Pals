@@ -12,18 +12,17 @@
     Address:
     <%= @restaurant.address %>
   </li>
-  <li>
-    Details:
-    <%= @restaurant.details %>
-  </li>
 </ul>
 
-<h3>Description</h3>
+<details>
+<summary>Description</summary>
 <p id="description">
   <%= @restaurant.details %>
 </p>
+</details>
 
-<h3>Review</h3>
+<details>
+<summary>Reviews</summary>
 <table class="table table-striped col-md-12" id="reviews">
   <thead>
     <tr>
@@ -80,8 +79,12 @@
     <%= submit_tag 'Submit review', class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+</details>
 
-<h3>Timeslot</h3>
+
+
+<details>
+<summary>Hang Out Timeslots</summary>
 <table class="table table-striped col-md-12" id="timeslot">
   <tbody>
     <% @timeslots.each do |timeslot| %>
@@ -138,6 +141,9 @@
 
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'New timeslot', new_timeslot_path %></button>
+
+</details>
+
 <br></br>
 <div id="end">
   <%= link_to 'Back to restaurant list', root_path, class: 'btn btn-primary col-2' %>
